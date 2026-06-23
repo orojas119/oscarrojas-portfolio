@@ -11,10 +11,10 @@ export default function ProjectsPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
       <div className="mb-10">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-3">
+        <h1 className="text-3xl font-bold tracking-tight text-stone-900 dark:text-[#f7f1ed] mb-3">
           Projects
         </h1>
-        <p className="text-zinc-500 dark:text-zinc-400">
+        <p className="text-stone-500 dark:text-stone-400">
           A collection of data engineering and software projects I&apos;ve built.
         </p>
       </div>

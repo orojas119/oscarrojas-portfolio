@@ -35,17 +35,17 @@ export default async function ProjectPage({
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16">
       <Link
         href="/projects"
-        className="inline-flex items-center gap-1 text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors mb-10"
+        className="inline-flex items-center gap-1 text-sm text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-[#f7f1ed] transition-colors mb-10"
       >
         &larr; All projects
       </Link>
 
       {/* Hero */}
       <div className="mb-10">
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-3">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-stone-900 dark:text-[#f7f1ed] mb-3">
           {project.title}
         </h1>
-        <p className="text-lg text-zinc-500 dark:text-zinc-400">{project.tagline}</p>
+        <p className="text-lg text-stone-500 dark:text-stone-400">{project.tagline}</p>
       </div>
 
       {/* CTA buttons */}
@@ -55,7 +55,7 @@ export default async function ProjectPage({
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 rounded-md bg-zinc-900 dark:bg-zinc-50 text-white dark:text-zinc-900 text-sm font-medium hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
+            className="px-4 py-2 rounded-lg bg-stone-900 dark:bg-[#f7f1ed] text-white dark:text-stone-900 text-sm font-semibold hover:bg-stone-700 dark:hover:bg-stone-200 transition-colors"
           >
             Live Demo &rarr;
           </a>
@@ -65,7 +65,7 @@ export default async function ProjectPage({
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 rounded-md border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-sm font-medium hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
+            className="px-4 py-2 rounded-lg border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 text-sm font-semibold hover:bg-stone-200/60 dark:hover:bg-stone-800 transition-colors"
           >
             GitHub &rarr;
           </a>
@@ -74,7 +74,7 @@ export default async function ProjectPage({
 
       {/* Tech stack */}
       <section className="mb-10">
-        <h2 className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider mb-3">
+        <h2 className="text-xs font-semibold text-stone-400 dark:text-stone-500 uppercase tracking-wider mb-3">
           Tech Stack
         </h2>
         <div className="flex flex-wrap gap-2">
@@ -84,25 +84,25 @@ export default async function ProjectPage({
         </div>
       </section>
 
-      <hr className="border-zinc-100 dark:border-zinc-800 mb-10" />
+      <hr className="border-stone-200 dark:border-stone-800 mb-10" />
 
       {/* Overview */}
       <section className="mb-10">
-        <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-4">Overview</h2>
-        <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm sm:text-base">
+        <h2 className="text-lg font-semibold text-stone-900 dark:text-[#f7f1ed] mb-4">Overview</h2>
+        <p className="text-stone-600 dark:text-stone-400 leading-relaxed text-sm sm:text-base">
           {project.description}
         </p>
       </section>
 
       {/* What I Built */}
       <section className="mb-10">
-        <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-4">
+        <h2 className="text-lg font-semibold text-stone-900 dark:text-[#f7f1ed] mb-4">
           What I Built
         </h2>
         <ul className="space-y-2.5">
           {project.features.map((feature, i) => (
-            <li key={i} className="flex items-start gap-2.5 text-zinc-600 dark:text-zinc-400">
-              <span className="mt-2 shrink-0 w-1.5 h-1.5 rounded-full bg-indigo-500 dark:bg-indigo-400" />
+            <li key={i} className="flex items-start gap-2.5 text-stone-600 dark:text-stone-400">
+              <span className="mt-2 shrink-0 w-1.5 h-1.5 rounded-full bg-amber-500 dark:bg-amber-400" />
               <span className="text-sm leading-relaxed">{feature}</span>
             </li>
           ))}
@@ -111,12 +111,12 @@ export default async function ProjectPage({
 
       {/* What I Learned */}
       <section className="mb-12">
-        <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-4">
+        <h2 className="text-lg font-semibold text-stone-900 dark:text-[#f7f1ed] mb-4">
           What I Learned
         </h2>
         <div className="space-y-3">
           {project.learned.map((item, i) => (
-            <p key={i} className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            <p key={i} className="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
               {item}
             </p>
           ))}
@@ -125,16 +125,16 @@ export default async function ProjectPage({
 
       {/* Screenshots placeholder */}
       <section>
-        <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-4">
+        <h2 className="text-lg font-semibold text-stone-900 dark:text-[#f7f1ed] mb-4">
           Screenshots
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[1, 2].map((n) => (
             <div
               key={n}
-              className="aspect-video rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center"
+              className="aspect-video rounded-xl bg-stone-100 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 flex items-center justify-center"
             >
-              <span className="text-xs text-zinc-400 dark:text-zinc-600">Screenshot {n}</span>
+              <span className="text-xs text-stone-400 dark:text-stone-600">Screenshot {n}</span>
             </div>
           ))}
         </div>

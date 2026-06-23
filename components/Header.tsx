@@ -13,11 +13,11 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-200 dark:border-zinc-800 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-stone-200 dark:border-stone-800 bg-[#f7f1ed]/90 dark:bg-stone-900/90 backdrop-blur-md">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         <Link
           href="/"
-          className="font-semibold text-zinc-900 dark:text-zinc-50 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
+          className="font-semibold text-stone-900 dark:text-[#f7f1ed] hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
         >
           Oscar Rojas
         </Link>
@@ -28,8 +28,8 @@ export function Header() {
               href={link.href}
               className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
                 pathname === link.href
-                  ? "text-zinc-900 dark:text-zinc-50 bg-zinc-100 dark:bg-zinc-800"
-                  : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-800/50"
+                  ? "text-stone-900 dark:text-[#f7f1ed] bg-stone-200 dark:bg-stone-800"
+                  : "text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-[#f7f1ed] hover:bg-stone-200/60 dark:hover:bg-stone-800/60"
               }`}
             >
               {link.label}
