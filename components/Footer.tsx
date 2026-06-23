@@ -30,7 +30,7 @@ export function Footer() {
               </svg>
             </a>
             <a
-              href="https://linkedin.com/in/oscar-rojas"
+              href="https://www.linkedin.com/in/oscarrojas119/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-[#f7f1ed] transition-colors"

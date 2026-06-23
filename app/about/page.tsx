@@ -139,7 +139,7 @@ export default function AboutPage() {
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="px-5 py-2.5 rounded-full border border-charcoal/15 dark:border-cream/15 text-[10px] font-bold tracking-[0.2em] uppercase text-charcoal/70 dark:text-cream/70 hover:bg-charcoal/5 dark:hover:bg-cream/5 hover:border-charcoal/30 dark:hover:border-cream/30 transition-all"
+                className="px-5 py-2.5 rounded-full border border-charcoal/22 dark:border-cream/22 bg-charcoal/[0.05] dark:bg-cream/[0.05] text-[10px] font-bold tracking-[0.2em] uppercase text-charcoal/75 dark:text-cream/75 hover:bg-charcoal/10 dark:hover:bg-cream/10 hover:border-charcoal/38 dark:hover:border-cream/38 transition-all"
               >
                 {label} →
               </a>

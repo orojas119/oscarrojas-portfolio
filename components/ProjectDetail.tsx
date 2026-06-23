@@ -76,7 +76,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 rounded-full border border-charcoal/20 dark:border-cream/20 text-charcoal dark:text-cream text-xs font-bold tracking-[0.2em] uppercase hover:bg-charcoal/5 dark:hover:bg-cream/5 transition-colors"
+              className="px-6 py-3 rounded-full border border-charcoal/25 dark:border-cream/25 bg-charcoal/[0.05] dark:bg-cream/[0.05] text-charcoal dark:text-cream text-xs font-bold tracking-[0.2em] uppercase hover:bg-charcoal/10 dark:hover:bg-cream/10 hover:border-charcoal/40 dark:hover:border-cream/40 transition-colors"
             >
               GitHub →
             </a>
