@@ -4,7 +4,7 @@ interface TechBadgeProps {
 
 export function TechBadge({ label }: TechBadgeProps) {
   return (
-    <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-stone-700">
+    <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-semibold tracking-[0.15em] uppercase bg-charcoal/6 dark:bg-cream/6 text-charcoal/70 dark:text-cream/70 border border-charcoal/10 dark:border-cream/10">
       {label}
     </span>
   );

@@ -1,27 +1,46 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ─── Design tokens ─────────────────────────────── */
 :root {
-  --background: #f7f1ed;
-  --foreground: #1c1917;
+  --background: #F9F6F0;
+  --foreground: #1A1A1A;
 }
 
 .dark {
-  --background: #1c1917;
-  --foreground: #f7f1ed;
+  --background: #1A1A1A;
+  --foreground: #F9F6F0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-cream:    #F9F6F0;
+  --color-charcoal: #1A1A1A;
+  --color-yellow:   #FFDE4D;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+/* ─── Base ────────────────────────────────────────── */
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Background grid ─────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(to right,  rgba(26, 26, 26, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26, 26, 26, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.dark .grid-bg {
+  background-image:
+    linear-gradient(to right,  rgba(249, 246, 240, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(249, 246, 240, 0.05) 1px, transparent 1px);
 }

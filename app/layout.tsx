@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { GridBackground } from "@/components/GridBackground";
+import { FloatingMenu } from "@/components/FloatingMenu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,11 +32,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen flex flex-col bg-[#f7f1ed] dark:bg-stone-900 text-stone-900 dark:text-[#f7f1ed] antialiased">
+      <body className="min-h-screen flex flex-col bg-cream dark:bg-charcoal text-charcoal dark:text-cream antialiased">
         <ThemeProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <GridBackground />
+          <main className="relative z-10 flex-1">{children}</main>
+          <FloatingMenu />
         </ThemeProvider>
       </body>
     </html>

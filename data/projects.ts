@@ -10,6 +10,9 @@ export interface Project {
   learned: string[];
   status: "live" | "wip" | "planned";
   featured: boolean;
+  year: string;
+  discipline: string;
+  accentColor: string;
 }
 
 export const projects: Project[] = [
@@ -20,7 +23,7 @@ export const projects: Project[] = [
     description:
       "A data engineering pipeline that ingests NBA game data via public APIs, transforms it using dbt, and serves analytics through a PostgreSQL-backed dashboard. Includes automated daily ingestion, data quality checks, and interactive visualizations.",
     techStack: ["Python", "dbt", "PostgreSQL", "Apache Airflow", "Pandas", "Docker"],
-    github: "https://github.com/orojas12",
+    github: "https://github.com/orojas119",
     demo: undefined,
     features: [
       "Automated daily ingestion of NBA game data from public APIs",
@@ -36,6 +39,9 @@ export const projects: Project[] = [
     ],
     status: "live",
     featured: true,
+    year: "2024",
+    discipline: "DATA ENGINEERING | PIPELINE",
+    accentColor: "#2DD4BF",
   },
   {
     slug: "live-game-tracker",
@@ -44,7 +50,7 @@ export const projects: Project[] = [
     description:
       "A real-time game tracking application that streams live NBA game data to users via WebSockets. Built with a Python/FastAPI backend and a Next.js frontend, it shows live scores, player stats, and play-by-play updates with sub-second latency.",
     techStack: ["Python", "FastAPI", "WebSockets", "Next.js", "TypeScript", "Tailwind CSS"],
-    github: "https://github.com/orojas12",
+    github: "https://github.com/orojas119",
     demo: undefined,
     features: [
       "Real-time score and stat updates pushed via WebSockets",
@@ -60,6 +66,9 @@ export const projects: Project[] = [
     ],
     status: "live",
     featured: true,
+    year: "2025",
+    discipline: "REAL-TIME | WEBSOCKETS",
+    accentColor: "#F97316",
   },
   {
     slug: "dfs-optimizer",
@@ -83,6 +92,9 @@ export const projects: Project[] = [
     ],
     status: "planned",
     featured: false,
+    year: "2026",
+    discipline: "OPTIMIZATION | COMING SOON",
+    accentColor: "#8B5CF6",
   },
 ];
 

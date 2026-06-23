@@ -1,28 +1,60 @@
-import type { Metadata } from "next";
+"use client";
+import { motion } from "framer-motion";
 import { projects } from "@/data/projects";
-import { ProjectCard } from "@/components/ProjectCard";
+import { ProjectRow } from "@/components/ProjectRow";
+import { PageHeader } from "@/components/PageHeader";
 
-export const metadata: Metadata = {
-  title: "Projects — Oscar Rojas",
-  description: "Data engineering and software engineering projects by Oscar Rojas.",
-};
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function ProjectsPage() {
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
-      <div className="mb-10">
-        <h1 className="text-3xl font-bold tracking-tight text-stone-900 dark:text-[#f7f1ed] mb-3">
-          Projects
-        </h1>
-        <p className="text-stone-500 dark:text-stone-400">
-          A collection of data engineering and software projects I&apos;ve built.
-        </p>
+    <>
+      <PageHeader section="Projects" />
+      <div className="max-w-6xl mx-auto px-6 py-16 sm:py-20 pb-40">
+        <div className="mb-14">
+          <div className="overflow-hidden">
+            <motion.h1
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.8, ease: EASE }}
+              className="text-5xl sm:text-6xl font-black uppercase tracking-[0.1em] text-charcoal dark:text-cream leading-none"
+            >
+              ALL
+            </motion.h1>
+          </div>
+          <div className="overflow-hidden">
+            <motion.h1
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.8, ease: EASE, delay: 0.07 }}
+              className="text-5xl sm:text-6xl font-black uppercase tracking-[0.1em] text-charcoal dark:text-cream leading-none"
+            >
+              PROJECTS
+            </motion.h1>
+          </div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-5 text-sm text-charcoal/50 dark:text-cream/50"
+          >
+            Data engineering and software projects I&apos;ve built.
+          </motion.p>
+        </div>
+
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.6, ease: EASE }}
+          className="border-t border-charcoal/10 dark:border-cream/10 origin-left"
+        />
+
+        <div>
+          {projects.map((project, i) => (
+            <ProjectRow key={project.slug} project={project} index={i} />
+          ))}
+        </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
-      </div>
-    </div>
+    </>
   );
 }
