@@ -6,6 +6,8 @@ export interface Project {
   techStack: string[];
   github?: string;
   demo?: string;
+  coverImage?: string;
+  images?: string[];
   features: string[];
   learned: string[];
   status: "live" | "wip" | "planned";
@@ -25,6 +27,13 @@ export const projects: Project[] = [
     techStack: ["Python", "dbt", "DuckDB", "Plotly Dash", "Pandas", "Render"],
     github: "https://github.com/orojas119/nba-analytics",
     demo: "https://nba-analytics-mzv8.onrender.com",
+    coverImage: "/images/nba-analytics/nba-analytics-dashboard.png",
+    images: [
+      "/images/nba-analytics/nba-analytics-dashboard.png",
+      "/images/nba-analytics/nba-analytics-filters.png",
+      "/images/nba-analytics/nba-analytics-leaderboard.png",
+      "/images/nba-analytics/nba-analytics-about.png",
+    ],
     features: [
       "529+ NBA players tracked across the 2024-25 season",
       "5 interactive filters: Minutes, Position, Age, Team, Games Played",

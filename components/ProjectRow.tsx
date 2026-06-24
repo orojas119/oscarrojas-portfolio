@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/data/projects";
 
@@ -32,23 +33,35 @@ export function ProjectRow({ project, index }: ProjectRowProps) {
             {project.year}
           </span>
 
-          {/* Image placeholder */}
+          {/* Thumbnail */}
           <motion.div
             whileHover={{ scale: 1.06 }}
             transition={{ type: "spring", stiffness: 300, damping: 22 }}
             className="relative w-20 h-14 sm:w-28 sm:h-20 rounded-lg shrink-0 overflow-hidden"
             style={{ backgroundColor: project.accentColor + "22" }}
           >
-            <div
-              className="absolute inset-0 rounded-lg opacity-80"
-              style={{
-                background: `linear-gradient(135deg, ${project.accentColor}33 0%, ${project.accentColor}99 100%)`,
-              }}
-            />
-            {isComingSoon && (
-              <span className="absolute inset-0 flex items-center justify-center text-[8px] tracking-widest uppercase text-charcoal/50 dark:text-cream/50">
-                Soon
-              </span>
+            {project.coverImage && !isComingSoon ? (
+              <Image
+                src={project.coverImage}
+                alt={project.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 80px, 112px"
+              />
+            ) : (
+              <>
+                <div
+                  className="absolute inset-0 opacity-80"
+                  style={{
+                    background: `linear-gradient(135deg, ${project.accentColor}33 0%, ${project.accentColor}99 100%)`,
+                  }}
+                />
+                {isComingSoon && (
+                  <span className="absolute inset-0 flex items-center justify-center text-[8px] tracking-widest uppercase text-charcoal/50 dark:text-cream/50">
+                    Soon
+                  </span>
+                )}
+              </>
             )}
           </motion.div>
 

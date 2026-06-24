@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/data/projects";
 import { TechBadge } from "./TechBadge";
@@ -83,11 +84,32 @@ export function ProjectDetail({ project }: { project: Project }) {
           )}
         </motion.div>
 
+        {/* Cover image */}
+        {project.coverImage && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mb-14"
+          >
+            <div className="relative aspect-video w-full rounded-xl overflow-hidden shadow-sm">
+              <Image
+                src={project.coverImage}
+                alt={`${project.title} dashboard`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 896px"
+                priority
+              />
+            </div>
+          </motion.div>
+        )}
+
         {/* Tech stack */}
         <motion.section
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.45 }}
           className="mb-14"
         >
           <p className="text-[10px] tracking-[0.4em] uppercase text-charcoal/40 dark:text-cream/40 mb-4">
@@ -106,7 +128,7 @@ export function ProjectDetail({ project }: { project: Project }) {
         <motion.section
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.45 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
           className="mb-14"
         >
           <p className="text-[10px] tracking-[0.4em] uppercase text-charcoal/40 dark:text-cream/40 mb-4">
@@ -121,7 +143,7 @@ export function ProjectDetail({ project }: { project: Project }) {
         <motion.section
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.55 }}
           className="mb-14"
         >
           <p className="text-[10px] tracking-[0.4em] uppercase text-charcoal/40 dark:text-cream/40 mb-5">
@@ -140,11 +162,43 @@ export function ProjectDetail({ project }: { project: Project }) {
           </ul>
         </motion.section>
 
+        {/* Screenshot gallery */}
+        {project.images && project.images.length > 0 && (
+          <motion.section
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="mb-14"
+          >
+            <p className="text-[10px] tracking-[0.4em] uppercase text-charcoal/40 dark:text-cream/40 mb-5">
+              Screenshots
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {project.images.map((src, i) => (
+                <div key={i}>
+                  <div className="relative aspect-video rounded-lg overflow-hidden shadow-sm">
+                    <Image
+                      src={src}
+                      alt={`${project.title} screenshot ${i + 1}`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 448px"
+                    />
+                  </div>
+                  <p className="mt-2 text-[9px] tracking-[0.2em] uppercase text-charcoal/30 dark:text-cream/30">
+                    Screenshot {i + 1}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </motion.section>
+        )}
+
         {/* What I Learned */}
         <motion.section
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.55 }}
+          transition={{ duration: 0.5, delay: 0.65 }}
           className="mb-14"
         >
           <p className="text-[10px] tracking-[0.4em] uppercase text-charcoal/40 dark:text-cream/40 mb-5">
@@ -155,30 +209,6 @@ export function ProjectDetail({ project }: { project: Project }) {
               <p key={i} className="text-sm text-charcoal/70 dark:text-cream/70 leading-relaxed">
                 {item}
               </p>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* Screenshots placeholder */}
-        <motion.section
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          <p className="text-[10px] tracking-[0.4em] uppercase text-charcoal/40 dark:text-cream/40 mb-5">
-            Screenshots
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[1, 2].map((n) => (
-              <div
-                key={n}
-                className="aspect-video rounded-xl border border-charcoal/8 dark:border-cream/8 flex items-center justify-center"
-                style={{ backgroundColor: project.accentColor + "11" }}
-              >
-                <span className="text-[10px] tracking-widest uppercase text-charcoal/25 dark:text-cream/25">
-                  Coming soon
-                </span>
-              </div>
             ))}
           </div>
         </motion.section>
