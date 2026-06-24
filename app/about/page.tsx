@@ -129,6 +129,15 @@ export default function AboutPage() {
             Find me online
           </p>
           <div className="flex flex-wrap gap-3">
+            <a
+              href="/Oscar_Rojas_Resume.pdf"
+              download="Oscar_Rojas_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 rounded-full bg-yellow text-charcoal text-[10px] font-bold tracking-[0.2em] uppercase hover:opacity-85 transition-opacity"
+            >
+              Resume ↓
+            </a>
             {[
               { label: "GitHub", href: "https://github.com/orojas119" },
               { label: "LinkedIn", href: "https://www.linkedin.com/in/oscarrojas119/" },

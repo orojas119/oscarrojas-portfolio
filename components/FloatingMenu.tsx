@@ -8,6 +8,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
+  { href: "/Oscar_Rojas_Resume.pdf", label: "Resume ↗", external: true },
 ];
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -37,13 +38,25 @@ export function FloatingMenu() {
                   exit={{ opacity: 0, y: 30 }}
                   transition={{ delay: 0.05 + i * 0.08, duration: 0.65, ease: EASE }}
                 >
-                  <Link
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="block text-[14vw] sm:text-[10vw] md:text-8xl font-black uppercase text-cream hover:text-yellow transition-colors tracking-tighter leading-none py-1"
-                  >
-                    {link.label}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setOpen(false)}
+                      className="block text-[14vw] sm:text-[10vw] md:text-8xl font-black uppercase text-cream hover:text-yellow transition-colors tracking-tighter leading-none py-1"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="block text-[14vw] sm:text-[10vw] md:text-8xl font-black uppercase text-cream hover:text-yellow transition-colors tracking-tighter leading-none py-1"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
             </nav>

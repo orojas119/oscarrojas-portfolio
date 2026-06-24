@@ -76,6 +76,14 @@ export function FooterCTA() {
           >
             LinkedIn
           </a>
+          <a
+            href="/Oscar_Rojas_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs tracking-[0.25em] uppercase text-charcoal/60 dark:text-cream/60 hover:text-charcoal dark:hover:text-cream transition-colors"
+          >
+            Resume
+          </a>
         </div>
         <span className="text-[10px] tracking-[0.3em] uppercase text-charcoal/30 dark:text-cream/30">
           © {new Date().getFullYear()} Oscar Rojas
