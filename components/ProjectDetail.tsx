@@ -92,12 +92,12 @@ export function ProjectDetail({ project }: { project: Project }) {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mb-14"
           >
-            <div className="relative aspect-video w-full rounded-xl overflow-hidden shadow-sm">
+            <div className="relative aspect-video w-full rounded-lg overflow-hidden border border-charcoal/10 dark:border-cream/10 shadow-md bg-charcoal/5 dark:bg-cream/5">
               <Image
                 src={project.coverImage}
                 alt={`${project.title} dashboard`}
                 fill
-                className="object-cover"
+                className="object-contain p-2"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 896px"
                 priority
               />
@@ -173,24 +173,34 @@ export function ProjectDetail({ project }: { project: Project }) {
             <p className="text-[10px] tracking-[0.4em] uppercase text-charcoal/40 dark:text-cream/40 mb-5">
               Screenshots
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {project.images.map((src, i) => (
-                <div key={i}>
-                  <div className="relative aspect-video rounded-lg overflow-hidden shadow-sm">
-                    <Image
-                      src={src}
-                      alt={`${project.title} screenshot ${i + 1}`}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 448px"
-                    />
-                  </div>
-                  <p className="mt-2 text-[9px] tracking-[0.2em] uppercase text-charcoal/30 dark:text-cream/30">
-                    Screenshot {i + 1}
-                  </p>
+            {(() => {
+              const captions = [
+                "Dashboard Overview",
+                "Filter Controls",
+                "Impact Score Leaderboard",
+                "Technical Architecture",
+              ];
+              return (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {project.images.map((src, i) => (
+                    <div key={i}>
+                      <div className="relative aspect-video rounded-lg overflow-hidden border border-charcoal/10 dark:border-cream/10 shadow-sm bg-charcoal/5 dark:bg-cream/5">
+                        <Image
+                          src={src}
+                          alt={`${project.title} — ${captions[i] ?? `screenshot ${i + 1}`}`}
+                          fill
+                          className="object-contain p-2"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 448px"
+                        />
+                      </div>
+                      <p className="mt-2 text-[11px] tracking-[0.08em] uppercase text-charcoal/40 dark:text-cream/40 text-center">
+                        {captions[i] ?? `Screenshot ${i + 1}`}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              );
+            })()}
           </motion.section>
         )}
 
