@@ -35,7 +35,7 @@ export const projects: Project[] = [
       "/images/nba-analytics/nba-analytics-about.png",
     ],
     features: [
-      "529+ NBA players tracked across the 2024-25 season",
+      "529+ NBA players tracked across the 2025-26 season",
       "5 interactive filters: Minutes, Position, Age, Team, Games Played",
       "Top 15 Scorers visualization with blue gradient bars",
       "Team Efficiency scatter — PPG vs FG%, bubble-sized by roster depth",
