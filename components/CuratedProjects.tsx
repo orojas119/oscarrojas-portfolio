@@ -8,7 +8,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function CuratedProjects() {
   return (
-    <section className="max-w-6xl mx-auto px-6 py-24 sm:py-32">
+    <section className="max-w-6xl mx-auto px-6 pt-24 sm:pt-32 pb-0">
       {/* Section header */}
       <div className="mb-12 sm:mb-16">
         <motion.p
@@ -64,15 +64,18 @@ export function CuratedProjects() {
         className="border-t border-charcoal/10 dark:border-cream/10 origin-left"
       />
 
-      {/* Project rows — home page shows only the primary featured project */}
-      <div>
-        {projects
-          .filter((p) => p.featured && p.category !== "Internal Tools")
-          .slice(0, 1)
-          .map((project, i) => (
-            <ProjectRow key={project.slug} project={project} index={i} />
-          ))}
-      </div>
+      {/* Project rows */}
+      {(() => {
+        const HOME_SLUGS = ["nba-analytics", "live-game-tracker", "po-automation-platform"];
+        const homeProjects = HOME_SLUGS.map((slug) => projects.find((p) => p.slug === slug)!).filter(Boolean);
+        return (
+          <div>
+            {homeProjects.map((project, i) => (
+              <ProjectRow key={project.slug} project={project} index={i} />
+            ))}
+          </div>
+        );
+      })()}
 
       {/* View all link */}
       <motion.div
@@ -80,11 +83,11 @@ export function CuratedProjects() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="mt-8"
+        className="mt-6 mb-16"
       >
         <Link
           href="/projects"
-          className="text-[10px] tracking-[0.3em] uppercase text-charcoal/40 dark:text-cream/40 hover:text-charcoal dark:hover:text-cream transition-colors"
+          className="text-[10px] tracking-[0.25em] uppercase text-charcoal/50 dark:text-cream/50 hover:text-charcoal dark:hover:text-cream transition-colors"
         >
           View all 6 projects →
         </Link>
