@@ -92,6 +92,11 @@ export const projects: Project[] = [
     year: "2025",
     discipline: "REAL-TIME | FULL-STACK",
     accentColor: "#F97316",
+    coverImage: "/images/live-tracker/live-tracker-dashboard.png",
+    images: [
+      "/images/live-tracker/live-tracker-dashboard.png",
+      "/images/live-tracker/live-tracker-boxscore.png",
+    ],
   },
   {
     slug: "dfs-optimizer",
