@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { projects } from "@/data/projects";
 import { ProjectRow } from "./ProjectRow";
 
@@ -63,12 +64,31 @@ export function CuratedProjects() {
         className="border-t border-charcoal/10 dark:border-cream/10 origin-left"
       />
 
-      {/* Project rows */}
+      {/* Project rows — home page shows only the primary featured project */}
       <div>
-        {projects.map((project, i) => (
-          <ProjectRow key={project.slug} project={project} index={i} />
-        ))}
+        {projects
+          .filter((p) => p.featured && p.category !== "Internal Tools")
+          .slice(0, 1)
+          .map((project, i) => (
+            <ProjectRow key={project.slug} project={project} index={i} />
+          ))}
       </div>
+
+      {/* View all link */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="mt-8"
+      >
+        <Link
+          href="/projects"
+          className="text-[10px] tracking-[0.3em] uppercase text-charcoal/40 dark:text-cream/40 hover:text-charcoal dark:hover:text-cream transition-colors"
+        >
+          View all 6 projects →
+        </Link>
+      </motion.div>
     </section>
   );
 }

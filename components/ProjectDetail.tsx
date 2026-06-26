@@ -44,6 +44,16 @@ export function ProjectDetail({ project }: { project: Project }) {
           >
             {project.tagline}
           </motion.p>
+          {project.organization && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.38 }}
+              className="mt-3 text-[11px] text-charcoal/50 dark:text-cream/50 tracking-wide"
+            >
+              Built at {project.organization}
+            </motion.p>
+          )}
         </div>
 
         {/* Accent rule */}
@@ -62,7 +72,11 @@ export function ProjectDetail({ project }: { project: Project }) {
           transition={{ duration: 0.5, delay: 0.35 }}
           className="flex flex-wrap gap-3 mb-14"
         >
-          {project.demo && (
+          {project.deployment === "private" ? (
+            <span className="px-4 py-2 rounded-full border border-charcoal/20 dark:border-cream/20 text-charcoal/40 dark:text-cream/40 text-[10px] uppercase tracking-wide">
+              Private Deployment — Built for {project.organization}
+            </span>
+          ) : project.demo ? (
             <a
               href={project.demo}
               target="_blank"
@@ -71,7 +85,7 @@ export function ProjectDetail({ project }: { project: Project }) {
             >
               Live Demo →
             </a>
-          )}
+          ) : null}
           {project.github && (
             <a
               href={project.github}
