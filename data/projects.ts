@@ -24,9 +24,9 @@ export const projects: Project[] = [
   {
     slug: "nba-analytics",
     title: "NBA Analytics Dashboard",
-    tagline: "End-to-end NBA analytics: Python → dbt → DuckDB → live dashboard with 5 interactive filters",
+    tagline: "A player stats pipeline for the 2025-26 season — nightly ingestion from the NBA Stats API, dbt transforms, and a Plotly Dash dashboard with 5 interactive filters.",
     description:
-      "A production data pipeline that ingests 500+ NBA player records nightly, transforms them through dbt models with automated data quality tests, and surfaces insights through a live Plotly Dash dashboard. Features interactive filtering by position, age, minutes, team, and games played, plus an Impact Score leaderboard ranking players by a weighted composite metric. Built with Python, dbt, DuckDB, and deployed on Render with auto-deploy from GitHub.",
+      "Built around a question I kept coming back to: which players are actually useful, not just efficient? The pipeline pulls 500+ player records nightly, runs them through dbt models with 7 quality tests, and serves them in a dashboard filterable by position, age, minutes, team, and games played. The Impact Score leaderboard combines PPG, APG, RPG, and +/- into a single composite — a more honest answer than any individual stat.",
     techStack: ["Python", "dbt", "DuckDB", "Plotly Dash", "Pandas", "Render"],
     github: "https://github.com/orojas119/nba-analytics",
     demo: "https://nba-analytics-mzv8.onrender.com",
@@ -64,9 +64,9 @@ export const projects: Project[] = [
   {
     slug: "live-game-tracker",
     title: "Live Game Tracker",
-    tagline: "Real-time NBA game tracking with live score updates",
+    tagline: "NBA live scores, box scores, and standings that refresh every 30 seconds automatically.",
     description:
-      "A real-time game tracking application that streams live NBA game data to users via WebSockets. Built with a Python/FastAPI backend and a Next.js frontend, it shows live scores, player stats, and play-by-play updates with sub-second latency.",
+      "A dashboard that polls live NBA data every 30 seconds and shows scores, game clocks, and per-player box scores for any active game. The FastAPI backend caches responses for 30 seconds to stay under the NBA Stats API rate limit. Off-season, everything runs off a fallback dataset — which turned out to be half the engineering work anyway.",
     techStack: ["Python", "FastAPI", "React", "TypeScript", "Vite", "Render", "Vercel"],
     github: "https://github.com/orojas119/nba-live-tracker",
     demo: "https://nba-live-tracker-mauve.vercel.app",
@@ -127,9 +127,9 @@ export const projects: Project[] = [
   {
     slug: "nba-salary-cap",
     title: "NBA Salary Cap Tracker",
-    tagline: "All 30 NBA teams — salary breakdowns, luxury tax bills, and apron status with a custom tax bracket engine",
+    tagline: "Where every NBA team's payroll stands, what they owe in luxury tax, and what they're allowed to do next — backed by the actual CBA bracket math.",
     description:
-      "A full-stack salary cap tracker covering all 30 NBA teams for the 2026-27 season. Built a custom Python tax engine implementing the NBA CBA luxury tax bracket system with mathematically verified calculations — 27 unit tests confirm accuracy against known CBA boundary values. Features a React frontend with a custom SVG threshold visualization showing each team's payroll position relative to the salary cap, luxury tax line, first apron, and second apron. Seed data is pulled from Spotrac via a custom importer and validated daily via GitHub Actions.",
+      "The NBA luxury tax works like income tax: each bracket rate applies only to salary within that band, not the total. That distinction matters — it's why Phoenix owes $101M in tax while other teams just over the line owe a fraction of that. I built a Python engine that implements the full CBA formula and verified it with 27 unit tests against known boundary values. The frontend shows where each team sits relative to the cap, tax line, and both aprons, and lists what they can and can't do based on their tier.",
     techStack: ["Python", "FastAPI", "React", "TypeScript", "Vite", "Tailwind CSS", "Render", "Vercel", "GitHub Actions", "pytest"],
     github: "https://github.com/orojas119/nba-salary-cap",
     demo: "https://nba-salary-cap.vercel.app",
@@ -166,9 +166,9 @@ export const projects: Project[] = [
   {
     slug: "po-automation-platform",
     title: "PO Automation Platform",
-    tagline: "Full-stack purchase order system replacing a paper process — 200+ monthly transactions, dual-approval routing, custom domain",
+    tagline: "Replaced a paper-based purchase order process at a K-12 school — 200+ monthly transactions, dual-approval routing, and automatic PDF generation.",
     description:
-      "Designed and built a complete purchase order and requisition system from scratch for a K-12 institution. Replaced a manual paper-based workflow with a Power Automate-driven dual-approval pipeline, SharePoint backend, automated PDF generation via Encodian, and a GitHub Pages SPA dashboard secured with MSAL/Azure AD authentication. Includes fiscal-year rollover logic that resets automatically on July 1. Live on a custom domain at po.ilsroyals.com.",
+      "The school ran purchase orders through paper forms, routed them manually, and filed PDFs by hand. I replaced that with a SharePoint backend, a Power Automate pipeline that routes approvals by department and dollar threshold, and a dashboard where staff can track every request. PDFs generate automatically when an order is approved. The fiscal year resets on July 1 — no manual rollover required.",
     techStack: ["Power Automate", "SharePoint", "Azure AD", "MSAL", "JavaScript", "GitHub Pages", "Encodian"],
     features: [
       "Dual-approval workflow routing by department and amount threshold",
@@ -199,9 +199,9 @@ export const projects: Project[] = [
   {
     slug: "behavior-discipline-platform",
     title: "Student Behavior & Discipline Platform",
-    tagline: "Multi-phase incident reporting system for school administrators — tracking, analytics, and automated notifications",
+    tagline: "A system for the Dean of Students to log incidents, track patterns, and stay notified — built in 8 phases as requirements became clearer.",
     description:
-      "Built an end-to-end student behavior and discipline reporting platform across 8 development phases. The system includes a staff-facing incident submission form, a Dean of Students SPA dashboard for reviewing and managing cases, Power Automate flows for email notifications, and SharePoint as the data layer. Role-based access ensures staff see only relevant data while administrators have full visibility. All data is handled in compliance with institutional privacy requirements.",
+      "Staff were managing incident reports through email and spreadsheets. I built a submission form for staff and a dashboard for the Dean of Students to review, filter, and manage cases — shipped in 8 phases as requirements evolved through stakeholder feedback — which is how internal tools actually get built. All data stays within the school's Microsoft 365 environment, which matters when you're dealing with student records. Role-based views mean staff only see the cases they filed.",
     techStack: ["SharePoint", "Power Automate", "JavaScript", "Azure AD", "MSAL", "HTML/CSS"],
     features: [
       "Staff incident submission form with category, severity, and follow-up fields",
@@ -231,9 +231,9 @@ export const projects: Project[] = [
   {
     slug: "office-inventory-dashboard",
     title: "Office Inventory Dashboard",
-    tagline: "Azure-hosted inventory management with automated low-stock alerts, smart categorization, and ILS brand design system",
+    tagline: "A stock tracker for the school's operations team — real-time levels, automatic low-stock alerts, and a product categorizer built with regex instead of an API.",
     description:
-      "Built and deployed an office inventory management dashboard on Azure Static Web Apps with MSAL authentication. Features a regex-based product categorizer that replaced an external Anthropic API dependency — reducing cost and removing a third-party point of failure. Includes a Power Automate flow that monitors stock levels and sends automated low-stock alerts to the operations team. Shipped with a 14-page technical handoff document.",
+      "The first version used the Anthropic API to categorize product names. It worked, but it added per-request cost and an external dependency for something that didn't need to be that complicated. Replaced it with a regex categorizer — faster, free, and doesn't fail if the API is down. A Power Automate flow checks stock daily and alerts the team when anything runs low. Shipped with 14 pages of documentation so whoever maintains it next doesn't have to figure it out from scratch.",
     techStack: ["Azure Static Web Apps", "SharePoint", "Power Automate", "JavaScript", "MSAL", "Azure AD"],
     features: [
       "Real-time inventory view backed by SharePoint lists",

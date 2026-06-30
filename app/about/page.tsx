@@ -51,20 +51,21 @@ export default function AboutPage() {
           className="mb-14 space-y-5 max-w-2xl"
         >
           <p className="text-base sm:text-lg text-charcoal/75 dark:text-cream/75 leading-relaxed">
-            I&apos;m a data engineer with 6+ years of experience across automation, infrastructure,
-            and data systems. My path started in software — building automation tools, backend APIs,
-            and infrastructure — before pivoting fully into data. That background shapes how I work:
-            I write Python that handles failures gracefully, build dbt models with real test
-            coverage, and design pipelines meant to be maintained, not just to run once.
+            I&apos;m a data engineer based in Miami. My background is in software — automation,
+            backend APIs, infrastructure — and I&apos;ve spent the past several years applying
+            that to data: building pipelines with real error handling, dbt models with test
+            coverage I actually run, and dashboards backed by data I trust.
           </p>
           <p className="text-base sm:text-lg text-charcoal/75 dark:text-cream/75 leading-relaxed">
-            Right now I&apos;m building an end-to-end NBA analytics pipeline and a real-time game
-            tracker — projects that go deep across the full data stack. Sports analytics is my
-            obsession.
+            Most of my personal work is NBA-related. I&apos;ve built a player stats pipeline,
+            a live score tracker, and a salary cap tool that implements the luxury tax bracket
+            formula from the CBA up — 27 unit tests confirm it matches the math. I keep building
+            these because I find the problems interesting.
           </p>
           <p className="text-base sm:text-lg text-charcoal/75 dark:text-cream/75 leading-relaxed">
-            B.A. in Computer Science from Florida International University. Open to data engineering
-            roles where reliability and craft are taken seriously.
+            B.A. in Computer Science from FIU. Based in Miami, bilingual in English and Spanish.
+            Looking for data engineering roles — ideally somewhere that cares about what happens
+            upstream of the dashboard.
           </p>
         </motion.div>
 
