@@ -99,32 +99,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "dfs-optimizer",
-    title: "DFS Lineup Optimizer",
-    tagline: "Daily fantasy sports lineup optimizer using linear programming",
-    description:
-      "A lineup optimizer for daily fantasy sports (DraftKings/FanDuel) that uses integer linear programming to maximize projected points within salary constraints. Incorporates player projections, ownership data, and correlation-aware stacking rules.",
-    techStack: ["Python", "OR-Tools", "Pandas", "FastAPI", "React"],
-    github: undefined,
-    demo: undefined,
-    features: [
-      "Integer linear programming optimizer with salary cap constraints",
-      "Support for DraftKings and FanDuel contest formats",
-      "Player ownership and projection data integration",
-      "Correlation-aware stacking rules for tournament play",
-      "Bulk lineup generation for large-field tournaments",
-    ],
-    learned: [
-      "Applied operations research techniques (ILP) to a real-world combinatorial optimization problem.",
-      "Learned how to model complex constraints in linear programming, including positional requirements and exposure caps.",
-    ],
-    status: "planned",
-    featured: false,
-    year: "2026",
-    discipline: "OPTIMIZATION | COMING SOON",
-    accentColor: "#8B5CF6",
-  },
-  {
     slug: "nba-salary-cap",
     title: "NBA Salary Cap Tracker",
     tagline: "Where every NBA team's payroll stands, what they owe in luxury tax, and what they're allowed to do next — backed by the actual CBA bracket math.",
