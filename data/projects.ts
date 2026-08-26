@@ -411,7 +411,7 @@ export const projects: Project[] = [
     deployment: "private",
     organization: "Immaculata-La Salle High School",
     coverImage: "/images/ils/ihelp-landing.jpg",
-    images: ["/images/ils/ihelp-landing.jpg", "/images/ils/ihelp-reports.jpg"],
+    images: ["/images/ils/ihelp-landing.jpg", "/images/ils/ihelp-dashboard-blurred.jpg", "/images/ils/ihelp-reports.jpg"],
   },
   {
     slug: "driver-mvr-form",
@@ -476,7 +476,7 @@ export const projects: Project[] = [
   {
     slug: "school-store-payments",
     title: "School Store Payments",
-    tagline: "An online school-store catalog and checkout so staff can buy branded items without a register visit — in progress, with the catalog/admin API built and checkout blocked on payment-provider sandbox access.",
+    tagline: "In Progress — an online school-store catalog and checkout so staff can buy branded items without a register visit. Catalog/admin API built; checkout blocked on payment-provider sandbox access.",
     description:
       "The school store only worked as an in-person register — I'm building a web app so staff can browse the catalog and pay online instead, with Finance notified automatically on every sale. The catalog and admin management API are built and working; checkout is on hold waiting on sandbox credentials from the payment provider, so the storefront and payment flow haven't been built yet. Worth including here as an honest in-progress example rather than only finished work.",
     techStack: ["Azure Static Web Apps", "Azure Functions", "SharePoint", "Microsoft Graph", "Clover", "Power Automate"],
@@ -494,7 +494,7 @@ export const projects: Project[] = [
     status: "wip",
     featured: false,
     year: "2026",
-    discipline: "INTERNAL TOOLS | COMMERCE",
+    discipline: "INTERNAL TOOLS | IN PROGRESS",
     accentColor: "#7C3AED",
     category: "Internal Tools",
     deployment: "private",
