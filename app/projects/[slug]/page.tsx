@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { projects, getProjectBySlug } from "@/data/projects";
+import { projects, getProjectBySlug, getAdjacentProjects } from "@/data/projects";
 import { ProjectDetail } from "@/components/ProjectDetail";
 
 export function generateStaticParams() {
@@ -29,6 +29,7 @@ export default async function ProjectPage({
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) notFound();
+  const { prev, next } = getAdjacentProjects(slug);
 
-  return <ProjectDetail project={project} />;
+  return <ProjectDetail project={project} prev={prev} next={next} />;
 }

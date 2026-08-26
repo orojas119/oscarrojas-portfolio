@@ -1,19 +1,73 @@
 "use client";
+import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/data/projects";
 import { TechBadge } from "./TechBadge";
 import { PageHeader } from "./PageHeader";
+import { ProjectCarouselNav } from "./ProjectCarouselNav";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-export function ProjectDetail({ project }: { project: Project }) {
+// Swipe thresholds: a swipe must travel further horizontally than this many
+// px, and be more horizontal than vertical, or it's treated as a scroll.
+const SWIPE_DISTANCE_THRESHOLD = 60;
+const SWIPE_DIRECTION_RATIO = 1.5;
+
+export function ProjectDetail({
+  project,
+  prev = null,
+  next = null,
+}: {
+  project: Project;
+  prev?: Project | null;
+  next?: Project | null;
+}) {
+  const router = useRouter();
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+
+  function handleTouchStart(e: React.TouchEvent) {
+    const t = e.touches[0];
+    touchStart.current = { x: t.clientX, y: t.clientY };
+  }
+
+  function handleTouchEnd(e: React.TouchEvent) {
+    const start = touchStart.current;
+    touchStart.current = null;
+    if (!start) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - start.x;
+    const dy = t.clientY - start.y;
+    if (
+      Math.abs(dx) < SWIPE_DISTANCE_THRESHOLD ||
+      Math.abs(dx) < Math.abs(dy) * SWIPE_DIRECTION_RATIO
+    ) {
+      return;
+    }
+    if (dx > 0 && prev) router.push(`/projects/${prev.slug}`);
+    else if (dx < 0 && next) router.push(`/projects/${next.slug}`);
+  }
+
   return (
     <>
       <PageHeader section={project.discipline} />
+      <ProjectCarouselNav prev={prev} next={next} />
 
-      <div className="max-w-4xl mx-auto px-6 py-16 sm:py-20 pb-40">
+      <div
+        className="max-w-4xl mx-auto px-6 py-16 sm:py-20 pb-40"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        {/* Swipe hint — mobile/tablet only, shown when there's somewhere to swipe to */}
+        {(prev || next) && (
+          <div className="lg:hidden flex items-center justify-center gap-2 mb-8 text-[9px] tracking-[0.3em] uppercase text-charcoal/35 dark:text-cream/35">
+            {prev && <span>← Swipe</span>}
+            {prev && next && <span className="text-charcoal/15 dark:text-cream/15">·</span>}
+            {next && <span>Swipe →</span>}
+          </div>
+        )}
         {/* Hero */}
         <div className="mb-14">
           <div className="overflow-hidden mb-2">
@@ -237,13 +291,31 @@ export function ProjectDetail({ project }: { project: Project }) {
           </div>
         </motion.section>
 
-        <div className="mt-16 border-t border-charcoal/8 dark:border-cream/8 pt-8">
+        <div className="mt-16 border-t border-charcoal/8 dark:border-cream/8 pt-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
           <Link
             href="/projects"
             className="text-[10px] tracking-[0.3em] uppercase text-charcoal/40 dark:text-cream/40 hover:text-charcoal dark:hover:text-cream transition-colors"
           >
             ← All projects
           </Link>
+          <div className="flex items-center gap-6 ml-auto">
+            {prev && (
+              <Link
+                href={`/projects/${prev.slug}`}
+                className="text-[10px] tracking-[0.3em] uppercase text-charcoal/40 dark:text-cream/40 hover:text-charcoal dark:hover:text-cream transition-colors truncate max-w-[10rem] sm:max-w-none"
+              >
+                ← {prev.title}
+              </Link>
+            )}
+            {next && (
+              <Link
+                href={`/projects/${next.slug}`}
+                className="text-[10px] tracking-[0.3em] uppercase text-charcoal/40 dark:text-cream/40 hover:text-charcoal dark:hover:text-cream transition-colors truncate max-w-[10rem] sm:max-w-none"
+              >
+                {next.title} →
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </>

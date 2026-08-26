@@ -102,7 +102,7 @@ export function Hero() {
           animate="show"
           className="mt-8 sm:mt-10 flex flex-wrap justify-center items-center gap-x-5 gap-y-2"
         >
-          {["Python", "TypeScript", "Azure", "SharePoint"].map((tag, i, arr) => (
+          {["Python", "TypeScript", "Azure", "SQL"].map((tag, i, arr) => (
             <span
               key={tag}
               className="text-[10px] sm:text-xs tracking-[0.3em] uppercase text-charcoal/50 dark:text-cream/50"
