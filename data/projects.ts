@@ -289,7 +289,8 @@ export const projects: Project[] = [
     category: "Internal Tools",
     deployment: "private",
     organization: "Immaculata-La Salle High School",
-    images: [],
+    coverImage: "/images/ils/ltv-dashboard.jpg",
+    images: ["/images/ils/ltv-dashboard.jpg", "/images/ils/ltv-inventory.jpg"],
   },
   {
     slug: "id-card-tool",
@@ -318,7 +319,8 @@ export const projects: Project[] = [
     category: "Internal Tools",
     deployment: "private",
     organization: "Immaculata-La Salle High School",
-    images: [],
+    coverImage: "/images/ils/idcard-form.jpg",
+    images: ["/images/ils/idcard-form.jpg"],
   },
   {
     slug: "senior-ipad-swap",
@@ -347,7 +349,8 @@ export const projects: Project[] = [
     category: "Internal Tools",
     deployment: "private",
     organization: "Immaculata-La Salle High School",
-    images: [],
+    coverImage: "/images/ils/senior-swap-console.jpg",
+    images: ["/images/ils/senior-swap-console.jpg"],
   },
   {
     slug: "picture-day-id-lookup",
@@ -377,7 +380,8 @@ export const projects: Project[] = [
     category: "Internal Tools",
     deployment: "private",
     organization: "Immaculata-La Salle High School",
-    images: [],
+    coverImage: "/images/ils/pictureday-lookup.jpg",
+    images: ["/images/ils/pictureday-lookup.jpg"],
   },
   {
     slug: "ihelp-ticketing",
@@ -406,7 +410,8 @@ export const projects: Project[] = [
     category: "Internal Tools",
     deployment: "private",
     organization: "Immaculata-La Salle High School",
-    images: [],
+    coverImage: "/images/ils/ihelp-landing.jpg",
+    images: ["/images/ils/ihelp-landing.jpg", "/images/ils/ihelp-reports.jpg"],
   },
   {
     slug: "driver-mvr-form",
@@ -434,7 +439,8 @@ export const projects: Project[] = [
     category: "Internal Tools",
     deployment: "private",
     organization: "Immaculata-La Salle High School",
-    images: [],
+    coverImage: "/images/ils/mvr-signin.jpg",
+    images: ["/images/ils/mvr-signin.jpg", "/images/ils/mvr-form.jpg"],
   },
   {
     slug: "math-lab-scheduler",
@@ -464,7 +470,8 @@ export const projects: Project[] = [
     category: "Internal Tools",
     deployment: "private",
     organization: "Immaculata-La Salle High School",
-    images: [],
+    coverImage: "/images/ils/mathlab-livesession.jpg",
+    images: ["/images/ils/mathlab-livesession.jpg"],
   },
   {
     slug: "school-store-payments",
