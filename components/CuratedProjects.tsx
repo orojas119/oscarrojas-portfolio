@@ -89,7 +89,7 @@ export function CuratedProjects() {
           href="/projects"
           className="text-[10px] tracking-[0.25em] uppercase text-charcoal/50 dark:text-cream/50 hover:text-charcoal dark:hover:text-cream transition-colors"
         >
-          View all 7 projects →
+          View all {projects.length} projects →
         </Link>
       </motion.div>
     </section>
