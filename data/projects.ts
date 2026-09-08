@@ -484,7 +484,7 @@ export const projects: Project[] = [
     title: "IT Helpdesk Ticketing",
     tagline: "The school IT department's helpdesk: students and staff submit tickets, including dedicated device-break and loaner-iPad flows, and staff triage everything from a dashboard that's aware of the school's rotating bell schedule.",
     description:
-      "The IT department needed a ticketing system built around how ILS's helpdesk actually works: a lot of device-break and loaner-iPad requests specifically, and staff who need to know where a student physically is right now, not just what they reported. I built a Next.js helpdesk with a staff triage dashboard (bulk assign/close, internal notes, a knowledge base) and two purpose-built flows for device breaks and loaner requests, each with their own lifecycle rather than being generic ticket notes. A daily sync of the school's rotation feed means a ticket shows the requester's current class block and room, not just their name.",
+      "ILS had been running its helpdesk on Freshdesk, where every single reply sent an email and nothing about the tool matched how this school actually works: a lot of device-break and loaner-iPad requests specifically, and staff who need to know where a student physically is right now, not just what they reported. I replaced it with a purpose-built Next.js helpdesk with a staff triage dashboard (bulk assign/close, internal notes, a knowledge base) and two dedicated flows for device breaks and loaner requests, each with their own lifecycle rather than being generic ticket notes. A daily sync of the school's rotation feed means a ticket shows the requester's current class block and room, not just their name.",
     techStack: ["Next.js", "TypeScript", "SQLite", "Prisma", "NextAuth", "Application Insights", "Cloudflare Turnstile"],
     features: [
       "Staff dashboard: bulk assign/close, internal notes, grouping by building, mobile swipe/pull-to-refresh, KB article management",
@@ -510,25 +510,25 @@ export const projects: Project[] = [
     images: ["/images/ils/ihelp-landing.jpg", "/images/ils/ihelp-dashboard-blurred.jpg", "/images/ils/ihelp-reports.jpg"],
     impact: {
       peopleServed: "890 students and 100 staff: everyone who can submit a ticket, plus every lookup the Room Locator feature resolves",
-      before: "IT issues were called in or emailed with no queue, no history, and no way to see where a student actually was for an in-person device fix. Schedule data the Room Locator now surfaces didn't exist anywhere staff could see it in the moment.",
-      after: "Staff triage every ticket from one dashboard with dedicated device-break and loaner flows, and ticket detail shows exactly where the requester is right now, synced nightly from PowerSchool's actual rotation.",
+      before: "ILS paid for Freshdesk, a generic helpdesk tool where every single reply generated an email and nothing about it was tailored to the school. There was no device-break or loaner-specific flow, and no way to see where a student physically was for an in-person fix. Schedule data the Room Locator now surfaces didn't exist anywhere staff could see it in the moment.",
+      after: "Staff triage every ticket from one dashboard with dedicated device-break and loaner flows, without generating an email for every reply, and ticket detail shows exactly where the requester is right now, synced nightly from PowerSchool's actual rotation.",
       comparables: [
         {
-          product: "Incident IQ",
-          vendor: "Incident IQ",
-          annualCost: 2700,
-          pricingBasis: "$2.38-$3.32/student/year, triangulated from two disclosed 2024-25 district contracts (Incident IQ has no public price list)",
-          sourceNote: "Unionville-Chadds Ford SD, PA board doc ($8,730.13 / 3,665 students) and Maize USD 266, KS board doc ($27,106.48 / 8,160 students).",
+          product: "Freshdesk",
+          vendor: "Freshworks",
+          annualCost: 800,
+          pricingBasis: "$800+/year, ILS's actual prior subscription before this tool replaced it",
+          sourceNote: "Reported directly by ILS IT, not a researched estimate. The plan also meant every reply sent an email and no workflow matched the school's actual device-break/loaner processes.",
         },
         {
           product: "SmartPass",
           vendor: "Raptor Technologies",
           annualCost: 3115,
           pricingBasis: "~$2.50-$5/student/year, blended from a disclosed district rate and vendor-cited figures, for the Room Locator feature specifically (SmartPass has no fixed public price sheet)",
-          sourceNote: "Frederick County Public Schools disclosed rate (~$3.15/student) plus SmartPass public marketing figures, Sept 2026.",
+          sourceNote: "Frederick County Public Schools disclosed rate (~$3.15/student) plus SmartPass public marketing figures, Sept 2026, since Freshdesk never had an equivalent capability at any price.",
         },
       ],
-      annualSavings: 5815,
+      annualSavings: 3915,
     },
   },
   {
@@ -878,6 +878,75 @@ export const projects: Project[] = [
       annualSavings: 5400,
     },
   },
+  {
+    slug: "ils-ios-apps",
+    title: "Native iOS Apps",
+    tagline: "Native iOS companion apps for the tools that need to live on every student and staff device, starting with iHelp, Math Lab Scheduler, the PO System, and the Behavior & Discipline Platform.",
+    description:
+      "Several of these tools get used often enough, by enough of the school, that a bookmarked web page is the wrong shape for them. The plan is native iOS apps for the highest-frequency, most device-bound tools first: iHelp for students and staff filing tickets, Math Lab Scheduler for tutees and tutors, the PO System for approved requesters and approvers, and the Behavior & Discipline Platform for the Dean of Students and staff filing incidents.",
+    techStack: ["Swift", "SwiftUI"],
+    features: [
+      "Native iOS apps for iHelp, Math Lab Scheduler, the PO System, and the Behavior & Discipline Platform",
+      "Shared Azure AD sign-in with the existing web apps, no separate account to manage",
+      "Push notifications for ticket updates, tutor assignments, and PO approvals instead of relying on email",
+    ],
+    learned: [],
+    status: "planned",
+    featured: false,
+    year: "TBD",
+    discipline: "INTERNAL TOOLS | PLANNED",
+    accentColor: "#9CA3AF",
+    category: "Internal Tools",
+    deployment: "private",
+    organization: "Immaculata-La Salle High School",
+    images: [],
+  },
+  {
+    slug: "campus-store-tech-sales",
+    title: "Campus Store + Tech Sales",
+    tagline: "A full campus store app built on top of School Store Payments, plus a staff/faculty-only Tech Sales storefront gated to @ilsroyals.com sign-in.",
+    description:
+      "School Store Payments already has a working catalog and admin API. The next phase turns that into a full campus store app, and adds a separate Tech Sales section for discounted or surplus tech equipment, restricted to staff and faculty who sign in with an @ilsroyals.com account.",
+    techStack: ["Azure Static Web Apps", "Azure Functions", "SharePoint", "Microsoft Graph"],
+    features: [
+      "Full campus store app extending School Store Payments' existing catalog and admin API",
+      "A separate Tech Sales storefront for surplus and discounted equipment, staff and faculty only",
+      "Access gated to @ilsroyals.com sign-in, no separate account or approval step",
+    ],
+    learned: [],
+    status: "planned",
+    featured: false,
+    year: "TBD",
+    discipline: "INTERNAL TOOLS | PLANNED",
+    accentColor: "#9CA3AF",
+    category: "Internal Tools",
+    deployment: "private",
+    organization: "Immaculata-La Salle High School",
+    images: [],
+  },
+  {
+    slug: "maintenance-ticketing",
+    title: "Maintenance Ticketing System",
+    tagline: "A dedicated ticketing system for the Maintenance department, replacing their own Freshdesk subscription the same way iHelp replaced IT's.",
+    description:
+      "Maintenance currently runs work orders through Freshdesk, the same generic tool IT paid for before iHelp replaced it. The plan is the same transition: a ticketing flow built around how Maintenance actually operates, replacing another recurring Freshdesk subscription with a purpose-built system.",
+    techStack: ["Next.js", "TypeScript", "Azure AD"],
+    features: [
+      "Work-order ticketing built around Maintenance's actual request types and priority levels",
+      "Staff triage dashboard modeled on the same pattern already proven with iHelp",
+      "Replaces Maintenance's own Freshdesk subscription",
+    ],
+    learned: [],
+    status: "planned",
+    featured: false,
+    year: "TBD",
+    discipline: "INTERNAL TOOLS | PLANNED",
+    accentColor: "#9CA3AF",
+    category: "Internal Tools",
+    deployment: "private",
+    organization: "Immaculata-La Salle High School",
+    images: [],
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
@@ -904,6 +973,10 @@ const ILS_ORG = "Immaculata-La Salle High School";
 
 export function getIlsProjects(): Project[] {
   return projects.filter((p) => p.organization === ILS_ORG && p.status === "live");
+}
+
+export function getIlsPlannedProjects(): Project[] {
+  return projects.filter((p) => p.organization === ILS_ORG && p.status === "planned");
 }
 
 export function getIlsAdjacentProjects(slug: string): {

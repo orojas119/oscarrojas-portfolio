@@ -1,7 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
-import { getIlsProjects, getIlsImpactSummary } from "@/data/projects";
+import { getIlsProjects, getIlsPlannedProjects, getIlsImpactSummary } from "@/data/projects";
 import { IlsProjectCard } from "@/components/ils/IlsProjectCard";
+import { IlsFutureProjectCard } from "@/components/ils/IlsFutureProjectCard";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -18,6 +19,7 @@ function Stat({ label, value }: { label: string; value: string }) {
 
 export default function IlsHubPage() {
   const ilsProjects = getIlsProjects();
+  const plannedProjects = getIlsPlannedProjects();
   const summary = getIlsImpactSummary();
 
   return (
@@ -86,6 +88,23 @@ export default function IlsHubPage() {
         and sources are disclosed on each project&apos;s page. These are estimates, not audited
         figures.
       </p>
+
+      {/* Future projects */}
+      {plannedProjects.length > 0 && (
+        <div className="mt-24">
+          <p className="text-[10px] tracking-[0.4em] uppercase text-charcoal/40 mb-2">
+            Future Projects
+          </p>
+          <p className="text-sm text-charcoal/50 mb-8 max-w-2xl">
+            What&apos;s next, not yet built.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {plannedProjects.map((project) => (
+              <IlsFutureProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
