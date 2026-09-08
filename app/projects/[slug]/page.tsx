@@ -1,10 +1,21 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import type { Metadata } from "next";
-import { projects, getProjectBySlug, getAdjacentProjects } from "@/data/projects";
+import { projects, getProjectBySlug } from "@/data/projects";
 import { ProjectDetail } from "@/components/ProjectDetail";
 
+const nonIlsProjects = projects.filter((p) => p.category !== "Internal Tools");
+
+function getNonIlsAdjacentProjects(slug: string) {
+  const index = nonIlsProjects.findIndex((p) => p.slug === slug);
+  if (index === -1) return { prev: null, next: null };
+  return {
+    prev: index > 0 ? nonIlsProjects[index - 1] : null,
+    next: index < nonIlsProjects.length - 1 ? nonIlsProjects[index + 1] : null,
+  };
+}
+
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return nonIlsProjects.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -29,7 +40,8 @@ export default async function ProjectPage({
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) notFound();
-  const { prev, next } = getAdjacentProjects(slug);
+  if (project.category === "Internal Tools") redirect(`/ils/${slug}`);
+  const { prev, next } = getNonIlsAdjacentProjects(slug);
 
   return <ProjectDetail project={project} prev={prev} next={next} />;
 }

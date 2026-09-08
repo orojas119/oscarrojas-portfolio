@@ -1,3 +1,19 @@
+export interface ImpactComparable {
+  product: string;
+  vendor: string;
+  annualCost: number;
+  pricingBasis: string;
+  sourceNote: string;
+}
+
+export interface ProjectImpact {
+  peopleServed: string;
+  before: string;
+  after: string;
+  comparables: ImpactComparable[];
+  annualSavings: number;
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -18,6 +34,7 @@ export interface Project {
   category?: string;
   deployment?: string;
   organization?: string;
+  impact?: ProjectImpact;
 }
 
 export const projects: Project[] = [
@@ -169,6 +186,21 @@ export const projects: Project[] = [
     organization: "Immaculata-La Salle High School",
     coverImage: "/images/ils/po-platform.png",
     images: [],
+    impact: {
+      peopleServed: "Every department head and approver who submits or routes a PO, plus Finance — roughly 20-30 staff school-wide",
+      before: "Purchase orders ran through paper forms routed by hand across departments, with no shared view of where a request stood or who needed to approve it next, and completed POs were filed as loose PDFs.",
+      after: "Every PO routes automatically by department and dollar threshold, generates its own PDF the moment it's approved, and any staff member can check a live status instead of asking around.",
+      comparables: [
+        {
+          product: "Procurify",
+          vendor: "Procurify Inc.",
+          annualCost: 10000,
+          pricingBasis: "No public list price; procurement software for ~15-20 requesters/approvers, small-org tier",
+          sourceNote: "Procurify publishes no pricing (procurify.com/pricing, checked Sept 2026); estimate is the midpoint of a $5k-$15k/year small-org range reported by third-party pricing tracker ITQlick — not a vendor-confirmed quote.",
+        },
+      ],
+      annualSavings: 10000,
+    },
   },
   {
     slug: "behavior-discipline-platform",
@@ -201,6 +233,21 @@ export const projects: Project[] = [
     organization: "Immaculata-La Salle High School",
     coverImage: "/images/ils/discipline-dashboard.png",
     images: [],
+    impact: {
+      peopleServed: "All ~100 staff who can file an incident, plus the Dean of Students who manages every case, covering all 890 students",
+      before: "Incident reports were managed through email threads and spreadsheets, so seeing patterns across a student's history or filtering by category meant manually digging back through old messages.",
+      after: "Staff file a structured incident form in minutes, and the Dean of Students filters and tracks every case — with automatic email notifications — from one dashboard, without leaving the school's own Microsoft 365 environment.",
+      comparables: [
+        {
+          product: "PBIS Rewards",
+          vendor: "PBIS Rewards (or comparable: Kickboard / PowerSchool Behavior Support)",
+          annualCost: 4000,
+          pricingBasis: "$3-6/student/year, typical published range for single-purpose K-12 behavior-tracking SaaS, applied to 890 students",
+          sourceNote: "Neither PBIS Rewards nor Kickboard publish per-student pricing; this uses an industry-typical range since no vendor quote exists — the least firmly sourced estimate in this showcase, flagged accordingly.",
+        },
+      ],
+      annualSavings: 4000,
+    },
   },
   {
     slug: "office-inventory-dashboard",
@@ -233,6 +280,21 @@ export const projects: Project[] = [
     organization: "Immaculata-La Salle High School",
     coverImage: "/images/ils/inventory-dashboard.png",
     images: [],
+    impact: {
+      peopleServed: "The school's operations team managing stock",
+      before: "Stock levels lived in whoever last checked the supply closet's head — no automatic alert before something actually ran out, and no shared record of what was on hand.",
+      after: "Stock levels are tracked live, low-stock alerts fire automatically, and the whole operations team sees the same numbers instead of relying on a supply run to find out something's missing.",
+      comparables: [
+        {
+          product: "Sortly",
+          vendor: "Sortly Inc.",
+          annualCost: 470,
+          pricingBasis: "~$39/mo effective (Advanced tier, billed annually), sortly.com/pricing",
+          sourceNote: "Published pricing page, checked Sept 2026; monthly billing would run $588/year instead.",
+        },
+      ],
+      annualSavings: 470,
+    },
   },
   {
     slug: "ltv-asset-checkout",
@@ -265,6 +327,21 @@ export const projects: Project[] = [
     organization: "Immaculata-La Salle High School",
     coverImage: "/images/ils/ltv-dashboard.jpg",
     images: ["/images/ils/ltv-dashboard.jpg", "/images/ils/ltv-inventory.jpg"],
+    impact: {
+      peopleServed: "Media production department staff and students checking out ~170 pieces of equipment",
+      before: "Equipment went out on a paper sign-out sheet, so there was no reliable record of what was checked out, to whom, or for how long — and no way to bundle gear that only made sense checked out together.",
+      after: "Staff scan a QR label to check equipment in or out, kits move as one unit, and overdue gear is flagged automatically instead of discovered by accident.",
+      comparables: [
+        {
+          product: "EZOfficeInventory",
+          vendor: "EZO",
+          annualCost: 800,
+          pricingBasis: "$58/mo Advanced tier starting price, unlimited users, published pricing page",
+          sourceNote: "ezo.io/pricing; figure corroborated via third-party trackers (costbench.com, itqlick.com) since a direct page fetch was incomplete — treat as a representative estimate.",
+        },
+      ],
+      annualSavings: 800,
+    },
   },
   {
     slug: "id-card-tool",
@@ -295,6 +372,21 @@ export const projects: Project[] = [
     organization: "Immaculata-La Salle High School",
     coverImage: "/images/ils/idcard-form.jpg",
     images: ["/images/ils/idcard-form.jpg"],
+    impact: {
+      peopleServed: "Front-office staff producing ID cards for students and staff",
+      before: "Producing a card meant finding the person in a spreadsheet, resizing their photo by hand with an Excel macro, and filing the record for the card printer — one extra manual hop for every single card.",
+      after: "A search-driven form looks someone up, resizes their photo natively, and files the record straight into the shared production queue — no macro, no manual filing step.",
+      comparables: [
+        {
+          product: "CardExchange Professional",
+          vendor: "CardExchange Solutions",
+          annualCost: 230,
+          pricingBasis: "$695 one-time perpetual license, amortized over 3 years",
+          sourceNote: "ID badge software is typically sold as a perpetual license, not a subscription, so this is a rough annualized stand-in, not an apples-to-apples SaaS comparison — the bigger win here was eliminating a manual Excel-macro photo-resize step per card, which has no clean dollar comparable.",
+        },
+      ],
+      annualSavings: 230,
+    },
   },
   {
     slug: "senior-ipad-swap",
@@ -325,6 +417,21 @@ export const projects: Project[] = [
     organization: "Immaculata-La Salle High School",
     coverImage: "/images/ils/senior-swap-console.jpg",
     images: ["/images/ils/senior-swap-console.jpg"],
+    impact: {
+      peopleServed: "The senior class (~110 students) and the staff running intake, corners, and Finance on swap day",
+      before: "Trade-in day ran on paper folders per corner — intake sheets, transfer status, and damage history all tracked by hand and reconciled by Finance afterward.",
+      after: "One app carries intake, corner check-in, and Finance fee collection through the day, with transfer and damage fees modeled as genuinely separate flows instead of one generic fee field.",
+      comparables: [
+        {
+          product: "Staff time saved (labor-hours)",
+          vendor: "N/A — no clean SaaS comparable for a one-day event tool",
+          annualCost: 240,
+          pricingBasis: "~10-12 staff-hours saved per event year (paper intake, corner folder-flipping, manual Finance reconciliation) at an estimated $22/hr blended school support-staff rate",
+          sourceNote: "Blended rate derived from NEA's 2024-25 national education-support-professional average (~$17.50/hr), adjusted for private-school context; the closest real SaaS product (Manage1to1, a year-round 1:1 device platform) would cost ~$1,257/year but overstates impact for a single annual event, so labor-hours is the more honest framing.",
+        },
+      ],
+      annualSavings: 240,
+    },
   },
   {
     slug: "picture-day-id-lookup",
@@ -356,6 +463,21 @@ export const projects: Project[] = [
     organization: "Immaculata-La Salle High School",
     coverImage: "/images/ils/pictureday-lookup.jpg",
     images: ["/images/ils/pictureday-lookup.jpg"],
+    impact: {
+      peopleServed: "IT staff at the picture-day table processing all 890 students in one day",
+      before: "IT staff looked students up on a paper roster and hand-logged which ID card number went to whom — slow under load, and error-prone enough to risk duplicate or misissued cards.",
+      after: "Search-as-you-type lookup and adaptive ID-number suggestion with duplicate-assignment prevention move the line faster and remove the paper log entirely.",
+      comparables: [
+        {
+          product: "Staff time saved + avoided card errors (labor-hours)",
+          vendor: "N/A — no SaaS product does search-and-issuance lookup specifically; ID-card design tools (IDCreator, CardExchange, AlphaCard) are card printers, not a fair comparable",
+          annualCost: 410,
+          pricingBasis: "~8-9 staff-hours saved (instant search + no manual re-keying of the paper log afterward) plus ~$220 in avoided duplicate/misissued-card costs, at an estimated 5% paper-process error rate across 890 students",
+          sourceNote: "Own estimate, not a vendor figure — grounded in ILS's actual scale (890 students, one processing day).",
+        },
+      ],
+      annualSavings: 410,
+    },
   },
   {
     slug: "ihelp-ticketing",
@@ -386,6 +508,28 @@ export const projects: Project[] = [
     organization: "Immaculata-La Salle High School",
     coverImage: "/images/ils/ihelp-landing.jpg",
     images: ["/images/ils/ihelp-landing.jpg", "/images/ils/ihelp-dashboard-blurred.jpg", "/images/ils/ihelp-reports.jpg"],
+    impact: {
+      peopleServed: "890 students and 100 staff — everyone who can submit a ticket, plus every lookup the Room Locator feature resolves",
+      before: "IT issues were called in or emailed with no queue, no history, and no way to see where a student actually was for an in-person device fix — schedule data the Room Locator now surfaces didn't exist anywhere staff could see it in the moment.",
+      after: "Staff triage every ticket from one dashboard with dedicated device-break and loaner flows, and ticket detail shows exactly where the requester is right now, synced nightly from PowerSchool's actual rotation.",
+      comparables: [
+        {
+          product: "Incident IQ",
+          vendor: "Incident IQ",
+          annualCost: 2700,
+          pricingBasis: "$2.38-$3.32/student/year, triangulated from two disclosed 2024-25 district contracts (Incident IQ has no public price list)",
+          sourceNote: "Unionville-Chadds Ford SD, PA board doc ($8,730.13 / 3,665 students) and Maize USD 266, KS board doc ($27,106.48 / 8,160 students).",
+        },
+        {
+          product: "SmartPass",
+          vendor: "Raptor Technologies",
+          annualCost: 3115,
+          pricingBasis: "~$2.50-$5/student/year, blended from a disclosed district rate and vendor-cited figures, for the Room Locator feature specifically (SmartPass has no fixed public price sheet)",
+          sourceNote: "Frederick County Public Schools disclosed rate (~$3.15/student) plus SmartPass public marketing figures, Sept 2026.",
+        },
+      ],
+      annualSavings: 5815,
+    },
   },
   {
     slug: "driver-mvr-form",
@@ -415,6 +559,21 @@ export const projects: Project[] = [
     organization: "Immaculata-La Salle High School",
     coverImage: "/images/ils/mvr-signin.jpg",
     images: ["/images/ils/mvr-signin.jpg", "/images/ils/mvr-form.jpg"],
+    impact: {
+      peopleServed: "~30 coaches and activity-van drivers, plus the reviewing office",
+      before: "Getting a driver cleared meant two separate paper forms — a request/approval form and a signed authorization — filled out, then manually assembled into a packet with a license scan before a record check could even start.",
+      after: "One combined online form handles both, supports multiple drivers in a single pass, and the finished PDF packet generates automatically and files itself into the reviewing office's document library.",
+      comparables: [
+        {
+          product: "SambaSafety continuous MVR monitoring",
+          vendor: "SambaSafety",
+          annualCost: 1185,
+          pricingBasis: "$2.50/driver/month continuous monitoring + $9.50/MVR pull, published SambaSafety fee schedule, applied to an estimated ~30 driving staff",
+          sourceNote: "Driver headcount (~30) is an ILS-specific estimate, not sourced from payroll/HR data — adjust if a real count is known.",
+        },
+      ],
+      annualSavings: 1185,
+    },
   },
   {
     slug: "math-lab-scheduler",
@@ -446,6 +605,21 @@ export const projects: Project[] = [
     organization: "Immaculata-La Salle High School",
     coverImage: "/images/ils/mathlab-livesession.jpg",
     images: ["/images/ils/mathlab-livesession.jpg"],
+    impact: {
+      peopleServed: "Math Lab tutees and tutors school-wide, plus the staff running the program",
+      before: "Sign-ups, tutor availability, and day-of scheduling ran through spreadsheets and email, with reminders and hall passes sent by hand for every session.",
+      after: "Students sign up per date, tutors get auto-assigned by availability and priority, staff run the live day from one console, and reminder/hall-pass emails send themselves off the same data.",
+      comparables: [
+        {
+          product: "Acuity Scheduling",
+          vendor: "Squarespace",
+          annualCost: 324,
+          pricingBasis: "$27/month Standard tier, annual billing, published Acuity Scheduling pricing page",
+          sourceNote: "Acuity is a generic appointment scheduler — it doesn't actually replicate tutor auto-assignment or the live-session console, so this is a conservative lower-bound comparable, not a feature-equivalent one.",
+        },
+      ],
+      annualSavings: 324,
+    },
   },
   {
     slug: "school-store-payments",
@@ -475,6 +649,235 @@ export const projects: Project[] = [
     organization: "Immaculata-La Salle High School",
     images: [],
   },
+  {
+    slug: "openhouse-registration",
+    title: "Open House Registration",
+    tagline: "A public admissions-funnel form replacing a paper Open House sign-up — multi-student sibling registration, automatic confirmation emails, and a single shared QR code for day-of check-in.",
+    description:
+      "Open House sign-ups ran off a printed, Archdiocese-style paper form that had to be retyped into a spreadsheet before anyone had a real headcount. I replaced it with a public 3-step registration form (Student → Parent/Guardian → Review) that supports registering siblings in one pass, auto-detects Archdiocese of Miami schools to prompt for a shared PowerSchool number, and sends a confirmation email with the event details and calendar links the moment a family submits. On event day, families check in through a single shared QR code, and admissions staff watch registrant, guest, and check-in totals update live on a dashboard instead of reconciling a headcount afterward.",
+    techStack: ["HTML/CSS/JavaScript", "Azure Functions", "SharePoint", "Microsoft Graph", "Cloudflare Turnstile", "GitHub Pages"],
+    features: [
+      "3-step public registration form with multi-student sibling support (up to 5 per submission) and ADOM-school auto-detection prompting a shared PowerSchool number field",
+      "Live phone-number formatting and validation across Home/Cell/Office fields",
+      "Automatic confirmation email — event details, an inline embedded crest, and Google/Apple calendar links — sent via Graph the moment a submission completes",
+      "Day-of check-in flow with an editable party size, driven by a single shareable QR code with the ILS crest embedded directly in the code",
+      "Admin dashboard — registrant table, deduplicated guest totals across sibling submissions, check-in stats, and self-service admin management (add/remove @ilsroyals.com admins with no redeploy)",
+      "Layered bot protection on the public submit endpoint — honeypot, per-IP rate limit, a fill-time check, and Cloudflare Turnstile — all rejecting silently so a scraper can't tell which layer caught it",
+    ],
+    learned: [
+      "Microsoft Graph rejects array values for a multi-select Choice column outright — converted the column to plain text and joined selections into a delimited string instead of fighting the documented (but broken-in-practice) array format.",
+      "Sibling rows from one multi-student submission all shared the same AttendeeCount, so the dashboard's guest total counted each sibling's party size separately — a 2-sibling '4 attending' submission read as 8. Fixed by adding a SubmissionId column and deduplicating the total by submission, not by row.",
+      "Relaxed the admin sign-in app's Enterprise Application from requiring explicit per-user assignment to open sign-in, then enforced the real admin allowlist in the API layer instead — avoided needing a Global-Admin-only Graph permission just so admins could manage each other.",
+      "A native window.confirm() on the remove-admin action froze the browser-automation test session mid-test — replaced with an in-page two-step confirm before shipping.",
+    ],
+    status: "live",
+    featured: false,
+    year: "2026",
+    discipline: "INTERNAL TOOLS | ADMISSIONS",
+    accentColor: "#0D9488",
+    category: "Internal Tools",
+    deployment: "private",
+    organization: "Immaculata-La Salle High School",
+    coverImage: "/images/ils/openhouse-registration.jpg",
+    images: [],
+    impact: {
+      peopleServed: "Every prospective family registering (siblings included), plus the admissions/front-office staff running day-of check-in",
+      before: "Open House sign-ups ran through a printed, Archdiocese-style paper form handed out and collected in person, then manually retyped into a spreadsheet before anyone could produce a real headcount or a working attendee list for check-in day.",
+      after: "Families register online in a guided 3-step form with sibling support and get an automatic confirmation email, then check in on event day via one shared QR code while staff watch registrant, guest, and check-in totals update live.",
+      comparables: [
+        {
+          product: "Formstack Suite",
+          vendor: "Formstack",
+          annualCost: 3000,
+          pricingBasis: "$250/month billed annually, Suite plan, published Formstack pricing page",
+          sourceNote: "A cheaper Forms-only tier ($996/year) exists but lacks the custom branding, self-check-in workflow, and submission volume this event actually needs.",
+        },
+      ],
+      annualSavings: 3000,
+    },
+  },
+  {
+    slug: "dress-approval",
+    title: "Dress Approval",
+    tagline: "A 4-angle photo submission and staff review flow for event dress-code approval — built first for Homecoming — replacing an in-person walk-by check.",
+    description:
+      "Dress-code approval for events like Homecoming ran as a visual, in-person check with no record of who was reviewed or against what rule. I built a flow where students upload four full-body photos (front, back, left, right) ahead of the event; each photo is hashed client-side to block duplicate images before upload. Staff review from a searchable, filterable admin queue — approve or reject with a note that's shown back to the student, so a rejection comes with exactly what to fix before resubmitting. Staff sign in through the school's Azure AD tenant, students through the separate ilsstudent.com tenant, both routed into the same app. It's one of three sub-apps sharing the 'ILS Activities' Azure Static Web App, alongside Fire Drill Checklist and the Scavenger Hunt.",
+    techStack: ["Vite", "React", "TypeScript", "Azure Functions", "Azure AD", "MSAL", "Microsoft Graph", "SharePoint/OneDrive"],
+    features: [
+      "4-angle (front/back/left/right) full-body photo submission with client-side SHA-256 duplicate-photo detection before upload",
+      "Staff admin queue — search by name, email, or student ID, filter by status, expand a row to view all four photos and leave a reviewer note",
+      "Approve/Reject workflow with the reviewer's note surfaced back to the student on rejection",
+      "Configurable per-event submission window and deadline, enforced both client-side and by the API",
+      "Separate Azure AD tenants for staff (ilsroyals.com) and students (ilsstudent.com) routed into one app",
+      "Deployed as one of three sub-apps sharing the same 'ILS Activities' Azure Static Web App",
+    ],
+    learned: [
+      "Hashing each photo client-side with SHA-256 before submission catches duplicate uploads (e.g. the same photo picked for two angles) without a server round-trip first.",
+      "Keeping a per-submission reviewer note visible to the student turned a rejection into something actionable instead of a dead end.",
+      "Branching sign-in and role logic on which Azure AD tenant a user belongs to (staff vs. student) removed the need for a manual allowlist to tell the two apart.",
+    ],
+    status: "live",
+    featured: false,
+    year: "2026",
+    discipline: "INTERNAL TOOLS | EVENT OPS",
+    accentColor: "#D946EF",
+    category: "Internal Tools",
+    deployment: "private",
+    organization: "Immaculata-La Salle High School",
+    coverImage: "/images/ils/dress-approval.jpg",
+    images: [],
+    impact: {
+      peopleServed: "Students attending dress-code-governed events (Homecoming first) and the approving staff",
+      before: "Dress-code compliance was checked in person at the door — no consistent rule application across reviewers, no record of who was checked, and no way for a student to know ahead of time if their outfit would pass.",
+      after: "Students submit four photos days ahead and get an Approved/Rejected decision with a specific note if rejected, giving time to fix it before the event, while staff review from one queue with a permanent decision record.",
+      comparables: [
+        {
+          product: "Jotform Gold",
+          vendor: "Jotform",
+          annualCost: 1150,
+          pricingBasis: "~$39-99/month Gold tier (top of range for multiple approver seats), published Jotform pricing",
+          sourceNote: "True SSO/Azure AD parity with the in-house tool would require Jotform's Enterprise tier (~$9,500/year median contract per Vendr) — using the closer-scoped Gold tier here understates, not overstates, the comparison.",
+        },
+      ],
+      annualSavings: 1150,
+    },
+  },
+  {
+    slug: "fire-drill-checklist",
+    title: "Fire Drill Checklist",
+    tagline: "A real-time, building-by-building room-check list for fire drills, synced daily to the school's actual rotation and bell schedule.",
+    description:
+      "During a fire drill, staff needed to confirm every classroom and space was cleared, block by block — but ILS runs a rotating schedule, so 'Block A' isn't the same wall-clock time or teacher two days in a row, and there was no shared source of truth for which rooms belonged to which block on any given day. I built a checklist grouped by building and then by building leader, polling every 2 seconds so multiple staff checking different zones see each other's progress live without a checkbox flickering back mid-tap. A rotation banner reads the day's real bell schedule — synced daily from PowerSchool via a feed the iHelp helpdesk app exposes — and auto-selects the checklist's current or next-up block, so staff aren't figuring out 'what block are we in' during an actual drill. It's one of three sub-apps sharing the 'ILS Activities' Azure Static Web App.",
+    techStack: ["Vite", "React", "TypeScript", "Azure Functions", "Cosmos DB", "Azure AD", "MSAL"],
+    features: [
+      "Real-time checklist polling every 2 seconds so multiple staff checking different buildings see each other's checkmarks live, without clobbering an in-flight tap",
+      "Items grouped by building, then banded by building leader independent of storage order, so staff can find their zone fast during an actual drill",
+      "Rotation banner reads the day's real bell schedule (daily-synced from PowerSchool via the iHelp helpdesk app's feed) and auto-selects the current or next-up block",
+      "Per-block reset with a confirmation step and a last-reset audit line (who/when)",
+      "Staff-only admin panel to manage the location list per block and control access, independent of the other two ILS Activities sub-apps",
+    ],
+    learned: [
+      "Buffering in-flight taps against the 2-second poll kept a checkbox from visually flickering back before the server confirmed it — needed once multiple staff could hit the same block screen at once.",
+      "ILS's rotating schedule means 'Block A' isn't the same time or teacher two days running — reading the real daily rotation feed instead of a static bell schedule was the only way to make the auto-selected block trustworthy during an actual drill.",
+      "Building-leader bands had to be assigned independent of storage order, since some locations were added to Cosmos in unrelated batches and don't sit adjacent to the rest of their leader's zone.",
+    ],
+    status: "live",
+    featured: false,
+    year: "2026",
+    discipline: "INTERNAL TOOLS | SAFETY",
+    accentColor: "#DC2626",
+    category: "Internal Tools",
+    deployment: "private",
+    organization: "Immaculata-La Salle High School",
+    coverImage: "/images/ils/fire-drill-checklist.jpg",
+    images: [],
+    impact: {
+      peopleServed: "890 students and 100 staff — every building on campus during a drill",
+      before: "Fire drills were tracked on paper or verbally, block-to-room assignments lived in someone's memory or an old printout, and there was no real-time view of which rooms across campus still hadn't been confirmed cleared.",
+      after: "Every staff member checking a building sees the same live list, grouped to match how campus is actually organized, with the day's real rotation block already resolved for them.",
+      comparables: [
+        {
+          product: "Raptor Emergency Management",
+          vendor: "Raptor Technologies",
+          annualCost: 2095,
+          pricingBasis: "$2,095/building/year, a real disclosed district subscription (Raptor has no public list price)",
+          sourceNote: "Reported district subscription cost via Times News Online, used as the most credible available proxy — not a quote for ILS specifically; actual cost would likely run higher with optional hardware/badge add-ons.",
+        },
+      ],
+      annualSavings: 2095,
+    },
+  },
+  {
+    slug: "ils-scavenger-hunt",
+    title: "ILS Scavenger Hunt",
+    tagline: "A photo-submission scavenger hunt for a scheduled school event window, with an admin override to open submissions early or late.",
+    description:
+      "Built for a scheduled school activity where students submit up to 10 distinct photos, grade-tagged, during a fixed daily window (2:15–3:30pm ET). Each photo is hashed client-side to block duplicate submissions, enforcing the 'no repeats' rule automatically instead of leaving it to staff to eyeball. Staff get an admin queue to review submissions and a window-override toggle to open submissions outside the scheduled hours when the day's actual schedule shifts. It's one of three sub-apps sharing the 'ILS Activities' Azure Static Web App alongside Fire Drill Checklist and Dress Approval.",
+    techStack: ["Vite", "React", "TypeScript", "Azure Functions", "Azure AD", "MSAL", "Microsoft Graph"],
+    features: [
+      "Grade-tagged photo submissions (up to 10 photos) with client-side SHA-256 hashing to block duplicate images before upload",
+      "Scheduled submission window (2:15–3:30pm ET) enforced both client- and server-side, with a staff override to force it open regardless of the clock",
+      "Staff admin queue for reviewing submissions by grade",
+      "Shared MSAL sign-in and mock-mode local preview pattern with the other ILS Activities apps, so staff screens can be rehearsed without a live sign-in",
+      "Post-launch fix: corrected a grade-column display bug found after the event went live",
+    ],
+    learned: [
+      "Hashing every photo client-side made 'no duplicate photos' an enforceable rule instead of an honor-system checkbox — the same pattern reused from Dress Approval.",
+      "A hard-coded submission window needed an admin override from day one, since a real event's actual schedule shifts and staff shouldn't be blocked from opening it manually.",
+    ],
+    status: "live",
+    featured: false,
+    year: "2026",
+    discipline: "INTERNAL TOOLS | EVENT OPS",
+    accentColor: "#65A30D",
+    category: "Internal Tools",
+    deployment: "private",
+    organization: "Immaculata-La Salle High School",
+    coverImage: "/images/ils/ils-scavenger-hunt.jpg",
+    images: [],
+    impact: {
+      peopleServed: "890 students",
+      before: "A scavenger-hunt-style activity would normally run on paper or a generic form tool with no duplicate-detection and no automatic window enforcement.",
+      after: "Students submit through a purpose-built flow that blocks duplicate photos and enforces the scheduled window automatically, with staff able to override the window in one click if the day runs long or short.",
+      comparables: [
+        {
+          product: "Goosechase (\"School 500\" tier)",
+          vendor: "Goosechase",
+          annualCost: 749,
+          pricingBasis: "$749/year, up to ~500 participants, per third-party pricing aggregators",
+          sourceNote: "Not Goosechase's own published price (their site lists Free, a $99/year single-classroom tier, and custom Schools & Districts quotes) — treat as a floor, not an exact match, since ILS's 890 students exceed the 500-participant cap this figure is based on.",
+        },
+      ],
+      annualSavings: 749,
+    },
+  },
+  {
+    slug: "classroom-walkthroughs",
+    title: "Classroom Walkthroughs",
+    tagline: "Replaced the Admin Team's Microsoft Form + hand-maintained Excel workbook for informal classroom observations with a live dashboard that rebuilds the old workbook's tabs automatically.",
+    description:
+      "The Admin Team's 8 observers logged classroom walkthroughs into a Microsoft Form that fed an Excel workbook someone had to keep current by hand — 81 historical rows deep, with no live view of who hadn't been observed yet and no trend line without opening the file and building a pivot table. I built a Next.js app with an /observe form matching the old workbook's exact fields (department, block, grade level, course level, engagement activities, classroom protocols, engagement band, visit length) so no historical data or habits were lost in the move, and an admin-only dashboard that recreates the workbook's by-teacher and results tabs live, plus trends, a not-yet-observed list, and a raw-data export. Both the observer allowlist and the teacher roster are governance-sensitive, so access is locked to 8 named observer emails and the dashboard to 2 admin emails, and the teacher list is read (not re-synced) from the same PowerSchool-backed SharePoint list another app already maintains.",
+    techStack: ["Next.js", "TypeScript", "NextAuth", "Azure AD", "Microsoft Graph", "SharePoint", "Azure Static Web Apps"],
+    features: [
+      "Observation form matching the legacy workbook's exact fields — department, block, grade level, course level, 16 engagement activities, 13 classroom protocols, engagement band, and visit length",
+      "Admin dashboard recreating the old workbook's by-teacher and results tabs automatically from live data",
+      "Teacher matrix, trend chart, and year-over-year comparison views",
+      "Not-yet-observed list — surfaces which teachers still need a walkthrough this period",
+      "Raw-data table with an Excel export, and a live-linked SharePoint export view for direct access",
+      "Reads the teacher roster from another app's PowerSchool-synced SharePoint list instead of re-syncing it — one source of truth, no duplicate SFTP job",
+      "One-time migration script that imported all 81 rows of historical workbook data into the new list",
+    ],
+    learned: [
+      "PowerSchool's 'Teacher' role tags counselors and Admin Team members the same as classroom teachers, and the school's public 'Meet the Team' page turned out not to be authoritative either — several staff listed there as non-Faculty actually do teach — so the exclusion list is maintained as its own corrected source of truth, not derived from either upstream source.",
+      "Reused another app's (id-card-tool) nightly PowerSchool-synced teacher list read-only instead of standing up a second SFTP sync for the same data — one job owns the sync, this app just reads the result.",
+      "Migrating the legacy workbook's 81 rows once, up front, meant the new dashboard had full historical trend data from day one instead of starting from zero.",
+    ],
+    status: "live",
+    featured: false,
+    year: "2026",
+    discipline: "INTERNAL TOOLS | OBSERVATION",
+    accentColor: "#6366F1",
+    category: "Internal Tools",
+    deployment: "private",
+    organization: "Immaculata-La Salle High School",
+    coverImage: "/images/ils/classroom-walkthroughs.jpg",
+    images: [],
+    impact: {
+      peopleServed: "8 Admin Team observers and ~90 teachers observed across the school year (of ILS's ~100 staff)",
+      before: "Observers logged walkthroughs into a Microsoft Form that fed an Excel workbook someone had to keep current by hand. Seeing which teachers hadn't been observed yet, or comparing trends across a school year, meant opening the file and building a pivot table from scratch every time — 81 rows deep with no live view of any of it.",
+      after: "Every walkthrough now writes straight to a SharePoint list, and the dashboard rebuilds the old workbook's by-teacher and results tabs live, plus a not-yet-observed list, a trend chart, and year-over-year comparison — the same information that used to take manual spreadsheet work is now just a page load.",
+      comparables: [
+        {
+          product: "TeachBoost Pro",
+          vendor: "TeachBoost",
+          annualCost: 5400,
+          pricingBasis: "$50/user/month, 9 licensed seats (8 observers + 1 admin), published TeachBoost starting price",
+          sourceNote: "TeachBoost's exact school/enterprise pricing requires a sales quote; calculation assumes per-observer-seat licensing, the more common model for this SaaS category — an assumption, not a quote.",
+        },
+      ],
+      annualSavings: 5400,
+    },
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
@@ -495,4 +898,35 @@ export function getAdjacentProjects(slug: string): {
 
 export function getFeaturedProjects(): Project[] {
   return projects.filter((p) => p.featured);
+}
+
+const ILS_ORG = "Immaculata-La Salle High School";
+
+export function getIlsProjects(): Project[] {
+  return projects.filter((p) => p.organization === ILS_ORG && p.status === "live");
+}
+
+export function getIlsAdjacentProjects(slug: string): {
+  prev: Project | null;
+  next: Project | null;
+} {
+  const ils = getIlsProjects();
+  const index = ils.findIndex((p) => p.slug === slug);
+  if (index === -1) return { prev: null, next: null };
+  return {
+    prev: index > 0 ? ils[index - 1] : null,
+    next: index < ils.length - 1 ? ils[index + 1] : null,
+  };
+}
+
+export function getIlsImpactSummary() {
+  const ils = getIlsProjects();
+  const withImpact = ils.filter((p): p is Project & { impact: ProjectImpact } => !!p.impact);
+  const totalAnnualSavings = withImpact.reduce((sum, p) => sum + p.impact.annualSavings, 0);
+  return {
+    toolCount: ils.length,
+    totalAnnualSavings,
+    studentsServed: 890,
+    staffServed: 100,
+  };
 }

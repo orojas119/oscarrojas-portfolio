@@ -13,6 +13,11 @@ interface ProjectRowProps {
 
 export function ProjectRow({ project, index }: ProjectRowProps) {
   const isComingSoon = project.status === "planned";
+  const isIls =
+    project.category === "Internal Tools" &&
+    project.organization === "Immaculata-La Salle High School" &&
+    project.status === "live";
+  const href = isComingSoon ? "#" : isIls ? `/ils/${project.slug}` : `/projects/${project.slug}`;
 
   return (
     <motion.div
@@ -22,7 +27,7 @@ export function ProjectRow({ project, index }: ProjectRowProps) {
       transition={{ duration: 0.7, ease: EASE, delay: index * 0.08 }}
     >
       <Link
-        href={isComingSoon ? "#" : `/projects/${project.slug}`}
+        href={href}
         aria-disabled={isComingSoon}
         tabIndex={isComingSoon ? -1 : undefined}
         className={`group block border-b border-charcoal/10 dark:border-cream/10 ${isComingSoon ? "cursor-default" : "cursor-pointer"}`}
@@ -70,9 +75,19 @@ export function ProjectRow({ project, index }: ProjectRowProps) {
             <span className="sm:hidden block text-[9px] tracking-[0.25em] uppercase text-charcoal/35 dark:text-cream/35 mb-1">
               {project.year}
             </span>
-            <h3 className="text-base sm:text-xl lg:text-2xl font-black uppercase tracking-tight text-charcoal dark:text-cream group-hover:text-charcoal/70 dark:group-hover:text-cream/70 transition-colors duration-300 truncate">
-              {project.title}
-            </h3>
+            <div className="flex items-center gap-2 min-w-0">
+              <h3 className="text-base sm:text-xl lg:text-2xl font-black uppercase tracking-tight text-charcoal dark:text-cream group-hover:text-charcoal/70 dark:group-hover:text-cream/70 transition-colors duration-300 truncate">
+                {project.title}
+              </h3>
+              {isIls && (
+                <span
+                  className="shrink-0 px-2 py-0.5 rounded-full text-[8px] font-bold tracking-[0.15em] uppercase"
+                  style={{ backgroundColor: "#FFC20E", color: "#004B23" }}
+                >
+                  ILS
+                </span>
+              )}
+            </div>
             <p className="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-charcoal/40 dark:text-cream/40 mt-1">
               {project.discipline}
             </p>

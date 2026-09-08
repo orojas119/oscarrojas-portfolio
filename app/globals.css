@@ -44,3 +44,30 @@ body {
     linear-gradient(to right,  rgba(249, 246, 240, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(249, 246, 240, 0.05) 1px, transparent 1px);
 }
+
+/* ─── ILS theme scope ──────────────────────────────
+   Applied to a wrapper around everything under /ils/*.
+   Overrides the same color/font tokens the rest of the site
+   already uses, so existing utility classes (bg-cream, text-charcoal,
+   bg-yellow, etc.) render in ILS's brand instead — a fixed light
+   look, deliberately ignoring the portfolio's dark-mode toggle so
+   the section reads as its own place. ─────────────────────────── */
+.ils-theme {
+  --color-cream:    #FCFAF3;
+  --color-charcoal: #0E2A18;
+  --color-yellow:   #FFC20E;
+  --font-sans: var(--font-montserrat);
+  --font-display: var(--font-bebas-neue);
+}
+
+.ils-theme .grid-bg {
+  background-image:
+    linear-gradient(to right,  rgba(0, 75, 35, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 75, 35, 0.06) 1px, transparent 1px);
+}
+
+.ils-theme h1,
+.ils-theme h2,
+.ils-theme .font-display {
+  font-family: var(--font-display), var(--font-sans);
+}
