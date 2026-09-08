@@ -99,7 +99,7 @@ export function FloatingMenu() {
         )}
       </AnimatePresence>
 
-      {/* Floating pill — always on top */}
+      {/* Floating pill: always on top */}
       <div className="fixed bottom-8 left-0 right-0 flex justify-center z-[60] pointer-events-none">
         <motion.button
           onClick={() => setOpen((v) => !v)}

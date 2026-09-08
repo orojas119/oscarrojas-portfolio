@@ -51,7 +51,7 @@ export default function IlsHubPage() {
           className="text-base sm:text-lg text-charcoal/70 leading-relaxed"
         >
           {summary.toolCount} internal tools, built solo, in daily use across{" "}
-          {summary.studentsServed} students and {summary.staffServed} staff — replacing paper
+          {summary.studentsServed} students and {summary.staffServed} staff, replacing paper
           forms, spreadsheets, and manual workflows with systems built for exactly how this
           school actually runs.
         </motion.p>
@@ -83,7 +83,7 @@ export default function IlsHubPage() {
       <p className="mt-16 text-[11px] text-charcoal/35 leading-relaxed max-w-2xl">
         &ldquo;Est. Annual Savings&rdquo; compares each tool to a named, less-customized
         commercial product doing a similar job, sized to ILS&apos;s enrollment. Full methodology
-        and sources are disclosed on each project&apos;s page — these are estimates, not audited
+        and sources are disclosed on each project&apos;s page. These are estimates, not audited
         figures.
       </p>
     </div>

@@ -131,7 +131,7 @@ export function IlsProjectDetail({
           className="px-4 py-2 rounded-full border text-[10px] uppercase tracking-wide text-charcoal/50"
           style={{ borderColor: "rgba(14,42,24,0.2)" }}
         >
-          Private Deployment — Built for {project.organization}
+          Private Deployment: Built for {project.organization}
         </span>
       </motion.div>
 
@@ -231,7 +231,7 @@ export function IlsProjectDetail({
                 >
                   <Image
                     src={src}
-                    alt={`${project.title} — screenshot ${i + 1}`}
+                    alt={`${project.title}: screenshot ${i + 1}`}
                     fill
                     className="object-contain p-2"
                     sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 448px"

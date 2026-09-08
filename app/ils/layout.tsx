@@ -14,9 +14,9 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "ILS Dev Projects — Oscar Rojas",
+  title: "ILS Dev Projects · Oscar Rojas",
   description:
-    "15 internal tools built for Immaculata-La Salle High School — before/after impact and estimated annual cost saved for each.",
+    "15 internal tools built for Immaculata-La Salle High School, with before/after impact and an estimated annual cost saved for each.",
 };
 
 export default function IlsLayout({ children }: { children: React.ReactNode }) {

@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Oscar Rojas — Data & Software Engineer",
+  title: "Oscar Rojas · Data & Software Engineer",
   description:
     "Portfolio of Oscar Rojas, a data engineer specializing in Python, dbt, and SQL.",
 };

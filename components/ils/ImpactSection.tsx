@@ -16,7 +16,7 @@ export function ImpactSection({ impact }: { impact: ProjectImpact }) {
       </p>
 
       <p className="text-sm text-charcoal/60 mb-6 leading-relaxed">
-        <span className="font-semibold text-charcoal/80">Who it serves — </span>
+        <span className="font-semibold text-charcoal/80">Who it serves: </span>
         {impact.peopleServed}
       </p>
 
@@ -54,14 +54,14 @@ export function ImpactSection({ impact }: { impact: ProjectImpact }) {
         <div className="space-y-3">
           {impact.comparables.map((c, i) => (
             <div key={i} className="text-xs text-charcoal/50 leading-relaxed">
-              <span className="font-semibold text-charcoal/70">vs. {c.product}</span> ({c.vendor}) —
+              <span className="font-semibold text-charcoal/70">vs. {c.product}</span> ({c.vendor}):
               est. ${c.annualCost.toLocaleString()}/yr. {c.pricingBasis}.
               <span className="block italic text-charcoal/40 mt-0.5">{c.sourceNote}</span>
             </div>
           ))}
         </div>
         <p className="mt-4 text-[10px] text-charcoal/35 leading-relaxed">
-          Estimate, not an audited figure — methodology and sources disclosed above for each comparable product.
+          Estimate, not an audited figure. Methodology and sources are disclosed above for each comparable product.
         </p>
       </div>
     </motion.section>

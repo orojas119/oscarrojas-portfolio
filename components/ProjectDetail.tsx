@@ -60,7 +60,7 @@ export function ProjectDetail({
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        {/* Swipe hint — mobile/tablet only, shown when there's somewhere to swipe to */}
+        {/* Swipe hint: mobile/tablet only, shown when there's somewhere to swipe to */}
         {(prev || next) && (
           <div className="lg:hidden flex items-center justify-center gap-2 mb-8 text-[9px] tracking-[0.3em] uppercase text-charcoal/35 dark:text-cream/35">
             {prev && <span>← Swipe</span>}
@@ -128,7 +128,7 @@ export function ProjectDetail({
         >
           {project.deployment === "private" ? (
             <span className="px-4 py-2 rounded-full border border-charcoal/20 dark:border-cream/20 text-charcoal/40 dark:text-cream/40 text-[10px] uppercase tracking-wide">
-              Private Deployment — Built for {project.organization}
+              Private Deployment: Built for {project.organization}
             </span>
           ) : project.demo ? (
             <a
@@ -255,7 +255,7 @@ export function ProjectDetail({
                       <div className="relative aspect-video rounded-lg overflow-hidden border border-charcoal/10 dark:border-cream/10 shadow-sm bg-charcoal/5 dark:bg-cream/5">
                         <Image
                           src={src}
-                          alt={`${project.title} — ${captions[i] ?? `screenshot ${i + 1}`}`}
+                          alt={`${project.title}: ${captions[i] ?? `screenshot ${i + 1}`}`}
                           fill
                           className="object-contain p-2"
                           sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 448px"

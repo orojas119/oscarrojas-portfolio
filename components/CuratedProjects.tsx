@@ -51,7 +51,7 @@ export function CuratedProjects() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-6 text-xs sm:text-sm text-charcoal/50 dark:text-cream/50 max-w-sm"
         >
-          Data engineering and software projects — each one built to solve a real problem.
+          Data engineering and software projects, each one built to solve a real problem.
         </motion.p>
       </div>
 
