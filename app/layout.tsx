@@ -16,9 +16,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://oscar-rojas.dev"),
   title: "Oscar Rojas · Data & Software Engineer",
   description:
     "Portfolio of Oscar Rojas, a data engineer specializing in Python, dbt, and SQL.",
+  openGraph: {
+    title: "Oscar Rojas",
+    description:
+      "Portfolio of Oscar Rojas, a data engineer specializing in Python, dbt, and SQL.",
+    url: "https://oscar-rojas.dev",
+    siteName: "Oscar Rojas",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Oscar Rojas",
+    description:
+      "Portfolio of Oscar Rojas, a data engineer specializing in Python, dbt, and SQL.",
+  },
 };
 
 export default function RootLayout({
