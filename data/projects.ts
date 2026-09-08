@@ -157,7 +157,7 @@ export const projects: Project[] = [
   {
     slug: "po-automation-platform",
     title: "PO Automation Platform",
-    tagline: "Replaced a paper-based purchase order process at a K-12 school: 200+ monthly transactions, dual-approval routing, and automatic PDF generation.",
+    tagline: "Replaced a paper-based purchase order process at Immaculata-La Salle High School: 200+ monthly transactions, dual-approval routing, and automatic PDF generation.",
     description:
       "The school ran purchase orders through paper forms, routed them manually, and filed PDFs by hand. I replaced that with a SharePoint backend, a Power Automate pipeline that routes approvals by department and dollar threshold, and a dashboard where staff can track every request. PDFs generate automatically when an order is approved. The fiscal year resets on July 1, with no manual rollover required.",
     techStack: ["Power Automate", "SharePoint", "Azure AD", "MSAL", "JavaScript", "GitHub Pages", "Encodian"],
@@ -242,7 +242,7 @@ export const projects: Project[] = [
           product: "PBIS Rewards",
           vendor: "PBIS Rewards (or comparable: Kickboard / PowerSchool Behavior Support)",
           annualCost: 4000,
-          pricingBasis: "$3-6/student/year, typical published range for single-purpose K-12 behavior-tracking SaaS, applied to 890 students",
+          pricingBasis: "$3-6/student/year, typical published range for single-purpose school behavior-tracking SaaS, applied to 890 students",
           sourceNote: "Neither PBIS Rewards nor Kickboard publish per-student pricing, so this uses an industry-typical range since no vendor quote exists. It's the least firmly sourced estimate in this showcase, flagged accordingly.",
         },
       ],
@@ -484,7 +484,7 @@ export const projects: Project[] = [
     title: "IT Helpdesk Ticketing",
     tagline: "The school IT department's helpdesk: students and staff submit tickets, including dedicated device-break and loaner-iPad flows, and staff triage everything from a dashboard that's aware of the school's rotating bell schedule.",
     description:
-      "The IT department needed a ticketing system built around how a K-12 helpdesk actually works: a lot of device-break and loaner-iPad requests specifically, and staff who need to know where a student physically is right now, not just what they reported. I built a Next.js helpdesk with a staff triage dashboard (bulk assign/close, internal notes, a knowledge base) and two purpose-built flows for device breaks and loaner requests, each with their own lifecycle rather than being generic ticket notes. A daily sync of the school's rotation feed means a ticket shows the requester's current class block and room, not just their name.",
+      "The IT department needed a ticketing system built around how ILS's helpdesk actually works: a lot of device-break and loaner-iPad requests specifically, and staff who need to know where a student physically is right now, not just what they reported. I built a Next.js helpdesk with a staff triage dashboard (bulk assign/close, internal notes, a knowledge base) and two purpose-built flows for device breaks and loaner requests, each with their own lifecycle rather than being generic ticket notes. A daily sync of the school's rotation feed means a ticket shows the requester's current class block and room, not just their name.",
     techStack: ["Next.js", "TypeScript", "SQLite", "Prisma", "NextAuth", "Application Insights", "Cloudflare Turnstile"],
     features: [
       "Staff dashboard: bulk assign/close, internal notes, grouping by building, mobile swipe/pull-to-refresh, KB article management",
