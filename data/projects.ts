@@ -906,6 +906,7 @@ export const projects: Project[] = [
     category: "Internal Tools",
     deployment: "private",
     organization: "Immaculata-La Salle High School",
+    coverImage: "/images/ils/hr-ticketing.jpg",
     images: [],
     impact: {
       peopleServed: "All ~100 ILS staff who can submit a ticket, plus the HR admins managing every case",
@@ -951,6 +952,7 @@ export const projects: Project[] = [
     category: "Internal Tools",
     deployment: "private",
     organization: "Immaculata-La Salle High School",
+    coverImage: "/images/ils/royal-courier-digest.jpg",
     images: [],
     impact: {
       peopleServed: "The Royal Courier media team producing the school's newsletter",
