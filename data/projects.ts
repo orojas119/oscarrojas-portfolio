@@ -168,10 +168,10 @@ export const projects: Project[] = [
       "MSAL authentication, so only authorized staff can access the dashboard",
       "SharePoint REST API for attachment handling and list management",
       "SPA dashboard showing PO status, history, and filters",
-      "Custom domain deployment at po.ilsroyals.com",
+      "Custom domain deployment on the school's own domain",
     ],
     learned: [
-      "Rotating exposed Power Automate SAS URLs and migrating to OAuth bearer token authentication after security audit",
+      "Hardened authentication after a security review",
       "SharePoint REST API pagination and attachment handling at scale",
       "Fiscal year state management without a traditional database",
       "Building multi-stakeholder approval flows where each approver has different data visibility",
@@ -278,7 +278,7 @@ export const projects: Project[] = [
     category: "Internal Tools",
     deployment: "private",
     organization: "Immaculata-La Salle High School",
-    coverImage: "/images/ils/inventory-dashboard.png",
+    coverImage: "/images/ils/inventory-dashboard-redacted.png",
     images: [],
     impact: {
       peopleServed: "The school's operations team managing stock",
@@ -314,7 +314,7 @@ export const projects: Project[] = [
     ],
     learned: [
       "SharePoint's multi-value lookup columns write unreliably at volume. Modeled kit membership as a plain tag on each asset instead, and always derived kit status from that rather than storing it as its own field.",
-      "Azure Static Web Apps reserves the Authorization header for its own auth layer, so I routed the app's own bearer token through a custom header instead and validated it inside the Function with a JOSE library, which kept the whole app on the free hosting tier.",
+      "Azure Static Web Apps' free tier has some real constraints around how auth is handled, and working within them, rather than upgrading tiers, took a bit of creative problem-solving to keep the whole app on free hosting.",
       "A scheduled reminder flow built as a timer-triggered Function first ran into consumption-host and TLS-inspection proxy issues in this environment. A scheduled Power Automate flow reading the same SharePoint data sidestepped both.",
     ],
     status: "live",
@@ -400,12 +400,12 @@ export const projects: Project[] = [
       "Two distinct fee types, a known-ahead transfer fee and a tiered damage fee based on prior-break history, never conflated into one field",
       "Auto-assigns students who never picked a color to a corner, load-balanced across all three and recomputable anytime",
       "Writes back to a shared damage-history list in a way that avoids double-triggering that system's own automated billing email",
-      "A local preview mode for rehearsing staff screens without needing to sign in",
+      "A rehearsal mode so staff could practice their corner screens ahead of swap day",
     ],
     learned: [
       "Modeling two conceptually different fees as separate flows, rather than one generic fee field with a type flag, kept the known-ahead and discovered-live cases from bleeding into each other's edge cases.",
       "Writing a flag onto a shared history row prevented this app's own fee collection from double-triggering another system's automated charge email off the same underlying list.",
-      "Branching access by email domain suffix (student vs. staff) removed the need to maintain a separate allowlist just to tell the two user types apart.",
+      "Telling students and staff apart didn't need a separate allowlist, since the sign-in flow already carried that distinction.",
     ],
     status: "live",
     featured: false,
@@ -511,7 +511,7 @@ export const projects: Project[] = [
     impact: {
       peopleServed: "890 students and 100 staff: everyone who can submit a ticket, plus every lookup the Room Locator feature resolves",
       before: "ILS paid for Freshdesk, a generic helpdesk tool where every single reply generated an email and nothing about it was tailored to the school. There was no device-break or loaner-specific flow, and no way to see where a student physically was for an in-person fix. Schedule data the Room Locator now surfaces didn't exist anywhere staff could see it in the moment.",
-      after: "Staff triage every ticket from one dashboard with dedicated device-break and loaner flows, without generating an email for every reply, and ticket detail shows exactly where the requester is right now, synced nightly from PowerSchool's actual rotation.",
+      after: "Staff triage every ticket from one dashboard with dedicated device-break and loaner flows, without generating an email for every reply, and ticket detail shows exactly where the requester is right now, synced nightly from the school's actual class rotation.",
       comparables: [
         {
           product: "Freshdesk",
@@ -627,7 +627,7 @@ export const projects: Project[] = [
     tagline: "In Progress: an online school-store catalog and checkout so staff can buy branded items without a register visit. Catalog/admin API built; checkout blocked on payment-provider sandbox access.",
     description:
       "The school store only worked as an in-person register, so I'm building a web app so staff can browse the catalog and pay online instead, with Finance notified automatically on every sale. The catalog and admin management API are built and working; checkout is on hold waiting on sandbox credentials from the payment provider, so the storefront and payment flow haven't been built yet. Worth including here as an honest in-progress example rather than only finished work.",
-    techStack: ["Azure Static Web Apps", "Azure Functions", "SharePoint", "Microsoft Graph", "Clover", "Power Automate"],
+    techStack: ["Azure Static Web Apps", "Azure Functions", "SharePoint", "Microsoft Graph", "Payment Gateway", "Power Automate"],
     features: [
       "Catalog and admin CRUD API, with the data layer isolated behind a single module so swapping in the real SharePoint-backed store is a contained change",
       "Role-gated admin routes, checked at both the hosting-platform gateway and inside each function handler (since direct API calls bypass the gateway check)",
@@ -654,20 +654,20 @@ export const projects: Project[] = [
     title: "Open House Registration",
     tagline: "A public admissions-funnel form replacing a paper Open House sign-up: multi-student sibling registration, automatic confirmation emails, and a single shared QR code for day-of check-in.",
     description:
-      "Open House sign-ups ran off a printed, Archdiocese-style paper form that had to be retyped into a spreadsheet before anyone had a real headcount. I replaced it with a public 3-step registration form (Student → Parent/Guardian → Review) that supports registering siblings in one pass, auto-detects Archdiocese of Miami schools to prompt for a shared PowerSchool number, and sends a confirmation email with the event details and calendar links the moment a family submits. On event day, families check in through a single shared QR code, and admissions staff watch registrant, guest, and check-in totals update live on a dashboard instead of reconciling a headcount afterward.",
+      "Open House sign-ups ran off a printed, Archdiocese-style paper form that had to be retyped into a spreadsheet before anyone had a real headcount. I replaced it with a public 3-step registration form (Student → Parent/Guardian → Review) that supports registering siblings in one pass, auto-detects Archdiocese of Miami schools to prompt for a shared student information system ID, and sends a confirmation email with the event details and calendar links the moment a family submits. On event day, families check in through a single shared QR code, and admissions staff watch registrant, guest, and check-in totals update live on a dashboard instead of reconciling a headcount afterward.",
     techStack: ["HTML/CSS/JavaScript", "Azure Functions", "SharePoint", "Microsoft Graph", "Cloudflare Turnstile", "GitHub Pages"],
     features: [
-      "3-step public registration form with multi-student sibling support (up to 5 per submission) and ADOM-school auto-detection prompting a shared PowerSchool number field",
+      "3-step public registration form with multi-student sibling support (up to 5 per submission) and ADOM-school auto-detection prompting a shared student information system ID field",
       "Live phone-number formatting and validation across Home/Cell/Office fields",
       "Automatic confirmation email with event details, an inline embedded crest, and Google/Apple calendar links, sent via Graph the moment a submission completes",
       "Day-of check-in flow with an editable party size, driven by a single shareable QR code with the ILS crest embedded directly in the code",
-      "Admin dashboard: registrant table, deduplicated guest totals across sibling submissions, check-in stats, and self-service admin management (add/remove @ilsroyals.com admins with no redeploy)",
-      "Layered bot protection on the public submit endpoint (honeypot, per-IP rate limit, a fill-time check, and Cloudflare Turnstile), all rejecting silently so a scraper can't tell which layer caught it",
+      "Admin dashboard: registrant table, deduplicated guest totals across sibling submissions, check-in stats, and self-service admin management (add/remove admins with no redeploy)",
+      "Layered bot protection on the public submit endpoint that rejects abuse attempts silently, without revealing which check caught them",
     ],
     learned: [
       "Microsoft Graph rejects array values for a multi-select Choice column outright. Converted the column to plain text and joined selections into a delimited string instead of fighting the documented (but broken-in-practice) array format.",
       "Sibling rows from one multi-student submission all shared the same AttendeeCount, so the dashboard's guest total counted each sibling's party size separately, and a 2-sibling '4 attending' submission read as 8. Fixed by adding a SubmissionId column and deduplicating the total by submission, not by row.",
-      "Relaxed the admin sign-in app's Enterprise Application from requiring explicit per-user assignment to open sign-in, then enforced the real admin allowlist in the API layer instead, avoiding the need for a Global-Admin-only Graph permission just so admins could manage each other.",
+      "Simplified admin management so admins could add or remove each other without needing an elevated, tenant-wide directory permission.",
       "A native window.confirm() on the remove-admin action froze the browser-automation test session mid-test. Replaced with an in-page two-step confirm before shipping.",
     ],
     status: "live",
@@ -701,20 +701,20 @@ export const projects: Project[] = [
     title: "Dress Approval",
     tagline: "A 4-angle photo submission and staff review flow for event dress-code approval, built first for Homecoming, replacing an in-person walk-by check.",
     description:
-      "Dress-code approval for events like Homecoming ran as a visual, in-person check with no record of who was reviewed or against what rule. I built a flow where students upload four full-body photos (front, back, left, right) ahead of the event. Each photo is hashed client-side to block duplicate images before upload. Staff review from a searchable, filterable admin queue: approve or reject with a note that's shown back to the student, so a rejection comes with exactly what to fix before resubmitting. Staff sign in through the school's Azure AD tenant, students through the separate ilsstudent.com tenant, both routed into the same app. It's one of three sub-apps sharing the 'ILS Activities' Azure Static Web App, alongside Fire Drill Checklist and the Scavenger Hunt.",
+      "Dress-code approval for events like Homecoming ran as a visual, in-person check with no record of who was reviewed or against what rule. I built a flow where students upload four full-body photos (front, back, left, right) ahead of the event. Each photo is hashed client-side to block duplicate images before upload. Staff review from a searchable, filterable admin queue: approve or reject with a note that's shown back to the student, so a rejection comes with exactly what to fix before resubmitting. Staff and students sign in through separate Azure AD tenants, both routed into the same app. It's one of three sub-apps sharing the 'ILS Activities' Azure Static Web App, alongside Fire Drill Checklist and the Scavenger Hunt.",
     techStack: ["Vite", "React", "TypeScript", "Azure Functions", "Azure AD", "MSAL", "Microsoft Graph", "SharePoint/OneDrive"],
     features: [
       "4-angle (front/back/left/right) full-body photo submission with client-side SHA-256 duplicate-photo detection before upload",
       "Staff admin queue: search by name, email, or student ID, filter by status, expand a row to view all four photos and leave a reviewer note",
       "Approve/Reject workflow with the reviewer's note surfaced back to the student on rejection",
       "Configurable per-event submission window and deadline, enforced both client-side and by the API",
-      "Separate Azure AD tenants for staff (ilsroyals.com) and students (ilsstudent.com) routed into one app",
+      "Separate Azure AD tenants for staff and students routed into one app",
       "Deployed as one of three sub-apps sharing the same 'ILS Activities' Azure Static Web App",
     ],
     learned: [
       "Hashing each photo client-side with SHA-256 before submission catches duplicate uploads (e.g. the same photo picked for two angles) without a server round-trip first.",
       "Keeping a per-submission reviewer note visible to the student turned a rejection into something actionable instead of a dead end.",
-      "Branching sign-in and role logic on which Azure AD tenant a user belongs to (staff vs. student) removed the need for a manual allowlist to tell the two apart.",
+      "Telling staff and students apart didn't need a manual allowlist, since the sign-in flow already carried that distinction.",
     ],
     status: "live",
     featured: false,
@@ -747,12 +747,12 @@ export const projects: Project[] = [
     title: "Fire Drill Checklist",
     tagline: "A real-time, building-by-building room-check list for fire drills, synced daily to the school's actual rotation and bell schedule.",
     description:
-      "During a fire drill, staff needed to confirm every classroom and space was cleared, block by block. But ILS runs a rotating schedule, so 'Block A' isn't the same wall-clock time or teacher two days in a row, and there was no shared source of truth for which rooms belonged to which block on any given day. I built a checklist grouped by building and then by building leader, polling every 2 seconds so multiple staff checking different zones see each other's progress live without a checkbox flickering back mid-tap. A rotation banner reads the day's real bell schedule, synced daily from PowerSchool via a feed the iHelp helpdesk app exposes, and auto-selects the checklist's current or next-up block, so staff aren't figuring out 'what block are we in' during an actual drill. It's one of three sub-apps sharing the 'ILS Activities' Azure Static Web App.",
+      "During a fire drill, staff needed to confirm every classroom and space was cleared, block by block. But ILS runs a rotating schedule, so 'Block A' isn't the same wall-clock time or teacher two days in a row, and there was no shared source of truth for which rooms belonged to which block on any given day. I built a checklist grouped by building and then by building leader, polling every 2 seconds so multiple staff checking different zones see each other's progress live without a checkbox flickering back mid-tap. A rotation banner reads the day's real bell schedule, synced daily through a shared internal feed, and auto-selects the checklist's current or next-up block, so staff aren't figuring out 'what block are we in' during an actual drill. It's one of three sub-apps sharing the 'ILS Activities' Azure Static Web App.",
     techStack: ["Vite", "React", "TypeScript", "Azure Functions", "Cosmos DB", "Azure AD", "MSAL"],
     features: [
       "Real-time checklist polling every 2 seconds so multiple staff checking different buildings see each other's checkmarks live, without clobbering an in-flight tap",
       "Items grouped by building, then banded by building leader independent of storage order, so staff can find their zone fast during an actual drill",
-      "Rotation banner reads the day's real bell schedule (daily-synced from PowerSchool via the iHelp helpdesk app's feed) and auto-selects the current or next-up block",
+      "Rotation banner reads the day's real bell schedule (daily-synced through a shared internal feed) and auto-selects the current or next-up block",
       "Per-block reset with a confirmation step and a last-reset audit line (who/when)",
       "Staff-only admin panel to manage the location list per block and control access, independent of the other two ILS Activities sub-apps",
     ],
@@ -798,7 +798,7 @@ export const projects: Project[] = [
       "Grade-tagged photo submissions (up to 10 photos) with client-side SHA-256 hashing to block duplicate images before upload",
       "Scheduled submission window (2:15–3:30pm ET) enforced both client- and server-side, with a staff override to force it open regardless of the clock",
       "Staff admin queue for reviewing submissions by grade",
-      "Shared MSAL sign-in and mock-mode local preview pattern with the other ILS Activities apps, so staff screens can be rehearsed without a live sign-in",
+      "Shared sign-in and rehearsal pattern with the other ILS Activities apps, so staff screens can be tested ahead of the event",
       "Post-launch fix: corrected a grade-column display bug found after the event went live",
     ],
     learned: [
@@ -836,7 +836,7 @@ export const projects: Project[] = [
     title: "Classroom Walkthroughs",
     tagline: "Replaced the Admin Team's Microsoft Form + hand-maintained Excel workbook for informal classroom observations with a live dashboard that rebuilds the old workbook's tabs automatically.",
     description:
-      "The Admin Team's 8 observers logged classroom walkthroughs into a Microsoft Form that fed an Excel workbook someone had to keep current by hand, 81 historical rows deep, with no live view of who hadn't been observed yet and no trend line without opening the file and building a pivot table. I built a Next.js app with an /observe form matching the old workbook's exact fields (department, block, grade level, course level, engagement activities, classroom protocols, engagement band, visit length) so no historical data or habits were lost in the move, and an admin-only dashboard that recreates the workbook's by-teacher and results tabs live, plus trends, a not-yet-observed list, and a raw-data export. Both the observer allowlist and the teacher roster are governance-sensitive, so access is locked to 8 named observer emails and the dashboard to 2 admin emails, and the teacher list is read (not re-synced) from the same PowerSchool-backed SharePoint list another app already maintains.",
+      "The Admin Team's 8 observers logged classroom walkthroughs into a Microsoft Form that fed an Excel workbook someone had to keep current by hand, 81 historical rows deep, with no live view of who hadn't been observed yet and no trend line without opening the file and building a pivot table. I built a Next.js app with an /observe form matching the old workbook's exact fields (department, block, grade level, course level, engagement activities, classroom protocols, engagement band, visit length) so no historical data or habits were lost in the move, and an admin-only dashboard that recreates the workbook's by-teacher and results tabs live, plus trends, a not-yet-observed list, and a raw-data export. Both the observer list and the teacher roster are governance-sensitive, so access is tightly restricted to a small, named set of observers and admins, and the teacher list is read (not re-synced) from the same SIS-backed SharePoint list another internal tool already maintains.",
     techStack: ["Next.js", "TypeScript", "NextAuth", "Azure AD", "Microsoft Graph", "SharePoint", "Azure Static Web Apps"],
     features: [
       "Observation form matching the legacy workbook's exact fields: department, block, grade level, course level, 16 engagement activities, 13 classroom protocols, engagement band, and visit length",
@@ -844,12 +844,12 @@ export const projects: Project[] = [
       "Teacher matrix, trend chart, and year-over-year comparison views",
       "Not-yet-observed list, surfacing which teachers still need a walkthrough this period",
       "Raw-data table with an Excel export, and a live-linked SharePoint export view for direct access",
-      "Reads the teacher roster from another app's PowerSchool-synced SharePoint list instead of re-syncing it: one source of truth, no duplicate SFTP job",
+      "Reads the teacher roster from another internal tool's SIS-synced SharePoint list instead of re-syncing it: one source of truth, no duplicate sync job",
       "One-time migration script that imported all 81 rows of historical workbook data into the new list",
     ],
     learned: [
-      "PowerSchool's 'Teacher' role tags counselors and Admin Team members the same as classroom teachers, and the school's public 'Meet the Team' page turned out not to be authoritative either (several staff listed there as non-Faculty actually do teach), so the exclusion list is maintained as its own corrected source of truth, not derived from either upstream source.",
-      "Reused another app's (id-card-tool) nightly PowerSchool-synced teacher list read-only instead of standing up a second SFTP sync for the same data. One job owns the sync, this app just reads the result.",
+      "The upstream student information system's 'Teacher' role tags counselors and Admin Team members the same as classroom teachers, and the school's public 'Meet the Team' page turned out not to be authoritative either (several staff listed there as non-Faculty actually do teach), so the exclusion list is maintained as its own corrected source of truth, not derived from either upstream source.",
+      "Reused another internal tool's nightly SIS-synced teacher list read-only instead of standing up a second sync job for the same data. One job owns the sync, this app just reads the result.",
       "Migrating the legacy workbook's 81 rows once, up front, meant the new dashboard had full historical trend data from day one instead of starting from zero.",
     ],
     status: "live",
@@ -881,21 +881,21 @@ export const projects: Project[] = [
   {
     slug: "hr-ticketing",
     title: "HR Ticketing System",
-    tagline: "An HR case-management portal for Immaculata-La Salle: automatic priority scoring, confidential RESTRICTED-ticket handling, and a full admin console, kept completely isolated from every other ILS tool.",
+    tagline: "An HR case-management portal for Immaculata-La Salle: automatic priority scoring, confidential case handling, and a full admin console for the HR team.",
     description:
-      "HR issues at ILS had nowhere purpose-built to go: no shared queue, no case history, and no way to keep a harassment complaint or a medical/FMLA request meaningfully more confidential than an email thread. I built an isolated case-management system for ILS's HR department: any staff member signs in to submit a ticket, and a scoring engine assigns a priority automatically from its category, subcategory, and request type, then routes it to the right HR handler. RESTRICTED tickets, covering confidential matters, are hidden from every HR admin except whoever it's assigned to, enforced in the application itself rather than relying on SharePoint permissions. It shares no code, credentials, or SharePoint site with iHelp or any other ILS tool, given how much more sensitive HR data is than a typical IT ticket.",
+      "HR issues at ILS had nowhere purpose-built to go: no shared queue, no case history, and no consistent way to keep a sensitive matter like a harassment complaint or a medical/FMLA request appropriately confidential. I built a dedicated case-management system for ILS's HR department: any staff member signs in to submit a ticket, and a scoring engine assigns a priority automatically from its category, subcategory, and request type, then routes it to the right HR handler. The most sensitive tickets stay visible only to the HR admin they're assigned to, reflecting how much more sensitive HR data is than a typical IT ticket.",
     techStack: ["Next.js", "TypeScript", "NextAuth", "Azure AD", "Microsoft Graph", "SharePoint", "Application Insights"],
     features: [
       "Ticket taxonomy: 12 categories (Employee Relations, Attendance & Leave, Payroll & Compensation, Benefits, and more) with per-category subcategories and 6 request types",
-      "Automatic priority scoring at intake (Critical, RESTRICTED, High, Normal, Low), each with its own SLA response window, always overridable by an HR admin",
-      "RESTRICTED tickets hidden from every HR admin except the assigned handler, enforced in application logic rather than SharePoint permissions",
+      "Automatic priority scoring at intake across multiple tiers, each with its own SLA response window, always overridable by an HR admin",
+      "The most sensitive tickets stay visible only to the assigned handler, not the wider HR team",
       "Admin console: filterable ticket queue with aging/overdue indicators, per-ticket internal notes never visible to the employee, a self-service Knowledge Base, and per-category routing rules",
       "Reports dashboard: ticket volume, average resolution time, and SLA compliance over a selectable date range",
       "Weekly email digest to HR admins, plus status-change and reply notifications to employees",
     ],
     learned: [
-      "An unclaimed RESTRICTED ticket (no assignee yet) needs an explicit exception in the visibility rule. Without it, no HR admin could ever satisfy 'is the assignee' to claim it in the first place. Found and fixed as a real, reproducible deadlock during a live end-to-end test.",
-      "Enforced RESTRICTED-ticket confidentiality in the app's own authorization logic instead of native SharePoint item permissions, since Graph has no reliable per-item permission API. Confirmed painful on prior ILS tools.",
+      "Confidential tickets needed a specific onboarding edge case worked out before they could be claimed and routed correctly. Found and fixed during end-to-end testing before launch.",
+      "Handling confidentiality for the most sensitive tickets meant rethinking an approach that hadn't scaled well on a prior project, since SharePoint's native permission model doesn't fit this use case at the granularity needed.",
       "Never auto-assign the Critical priority. True life-safety or legal emergencies need a human judgment call, not a keyword-matched rule, so only an HR admin can escalate a ticket to Critical manually.",
     ],
     status: "live",
@@ -911,7 +911,7 @@ export const projects: Project[] = [
     impact: {
       peopleServed: "All ~100 ILS staff who can submit a ticket, plus the HR admins managing every case",
       before: "HR issues went through email, phone calls, or in-person conversations, with no shared case history and no way to keep a harassment complaint or a medical/FMLA request meaningfully more confidential than any other email thread.",
-      after: "Staff submit a ticket that's automatically scored and routed, HR triages everything from one console, and RESTRICTED matters stay visible only to the handler they're assigned to, enforced by the app itself.",
+      after: "Staff submit a ticket that's automatically scored and routed, HR triages everything from one console, and the most sensitive matters stay visible only to the handler they're assigned to.",
       comparables: [
         {
           product: "AllVoices",
@@ -996,14 +996,14 @@ export const projects: Project[] = [
   {
     slug: "campus-store-tech-sales",
     title: "Campus Store + Tech Sales",
-    tagline: "A full campus store app built on top of School Store Payments, plus a staff/faculty-only Tech Sales storefront gated to @ilsroyals.com sign-in.",
+    tagline: "A full campus store app built on top of School Store Payments, plus a staff/faculty-only Tech Sales storefront gated to a school sign-in.",
     description:
-      "School Store Payments already has a working catalog and admin API. The next phase turns that into a full campus store app, and adds a separate Tech Sales section for discounted or surplus tech equipment, restricted to staff and faculty who sign in with an @ilsroyals.com account.",
+      "School Store Payments already has a working catalog and admin API. The next phase turns that into a full campus store app, and adds a separate Tech Sales section for discounted or surplus tech equipment, restricted to staff and faculty who sign in with a school account.",
     techStack: ["Azure Static Web Apps", "Azure Functions", "SharePoint", "Microsoft Graph"],
     features: [
       "Full campus store app extending School Store Payments' existing catalog and admin API",
       "A separate Tech Sales storefront for surplus and discounted equipment, staff and faculty only",
-      "Access gated to @ilsroyals.com sign-in, no separate account or approval step",
+      "Access gated to school sign-in, no separate account or approval step",
     ],
     learned: [],
     status: "planned",
