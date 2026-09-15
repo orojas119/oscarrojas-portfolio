@@ -370,8 +370,8 @@ export const projects: Project[] = [
     category: "Internal Tools",
     deployment: "private",
     organization: "Immaculata-La Salle High School",
-    coverImage: "/images/ils/idcard-form.jpg",
-    images: ["/images/ils/idcard-form.jpg"],
+    coverImage: "/images/ils/idcard-form-redacted.jpg",
+    images: ["/images/ils/idcard-form-redacted.jpg"],
     impact: {
       peopleServed: "Front-office staff producing ID cards for students and staff",
       before: "Producing a card meant finding the person in a spreadsheet, resizing their photo by hand with an Excel macro, and filing the record for the card printer, one extra manual hop for every single card.",
