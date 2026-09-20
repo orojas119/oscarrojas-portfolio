@@ -24,6 +24,12 @@ export interface Project {
   demo?: string;
   coverImage?: string;
   images?: string[];
+  /** Captions for `images`, index-aligned. Falls back to "Screenshot n". */
+  imageCaptions?: string[];
+  /** Side-by-side comparison rendered above the gallery (redesign case studies). */
+  beforeAfter?: { before: { image: string; label: string; note?: string }; after: { image: string; label: string; note?: string } };
+  /** Extra titled bullet sections rendered after "What I Built" (e.g. SEO work). */
+  sections?: { title: string; items: string[] }[];
   features: string[];
   learned: string[];
   status: "live" | "wip" | "planned";
@@ -114,6 +120,75 @@ export const projects: Project[] = [
       "/images/live-tracker/live-tracker-dashboard.png",
       "/images/live-tracker/live-tracker-boxscore.png",
     ],
+  },
+  {
+    slug: "bufi-preschool",
+    title: "Bufi Preschool Website",
+    tagline:
+      "Full redesign and migration of a bilingual preschool's Wix site to a static, motion-rich site on Cloudflare Pages: new domain, email hardening, online tour booking, a live mascot, and a local-SEO build aimed at the Doral map pack.",
+    description:
+      "Bufi is a family-run bilingual preschool in Doral, FL whose only job online is to get a parent to book a tour. The old Wix site had a dead booking widget, two broken embeds, pastel headings that failed contrast, 30 MB PNGs, page slugs like /blank-1, and English and Spanish crammed into the same labels. I rebuilt it from the brand up: every photo and the owl mascot carried over, proper EN and ES pages with hreflang, a hero that reads in under 2.5 s on 4G, and a booking flow that lands on a calendar instead of a contact form. Then the unglamorous half: moving the domain and DNS off Wix without losing the school's email, wiring the form to a Pages Function, and giving the site the structured data and local signals its best-rated competitor already had.",
+    techStack: ["HTML/CSS/JS", "Node.js", "Cloudflare Pages", "Cloudflare Workers", "Resend", "Google Calendar", "GSAP", "Sharp", "Playwright"],
+    demo: "https://bufipreschool.com",
+    coverImage: "/images/bufi/after-home.jpg",
+    beforeAfter: {
+      before: { image: "/images/bufi/before-full.jpg", label: "Before: bufi.info (Wix)", note: "Dead booking widget, broken embeds, pink headings on white, bilingual labels like “First Name - Nombre”." },
+      after: { image: "/images/bufi/after-full.jpg", label: "After: bufipreschool.com", note: "Photo-first hero, facts band, pinned programs strip, testimonials, FAQ, map, and a form that lands on a thank-you page." },
+    },
+    images: [
+      "/images/bufi/after-philosophy.jpg",
+      "/images/bufi/after-book.jpg",
+      "/images/bufi/after-vpk.jpg",
+      "/images/bufi/mobile-before-after.jpg",
+      "/images/bufi/after-es.jpg",
+      "/images/bufi/after-programs.jpg",
+    ],
+    imageCaptions: [
+      "Philosophy collage: scroll-driven parallax, and a small Bufi that flies the section",
+      "Book a tour: Google Calendar appointment schedule, staff-editable, 30-day window",
+      "VPK page: a low-competition local query the school genuinely qualifies for",
+      "Mobile, before and after (390px)",
+      "Spanish site: the school's own copy, not machine translation",
+      "Programs page with Doral-intent title and H1",
+    ],
+    features: [
+      "Static site with a small Node build: EN and ES rendered from one set of templates and two JSON string files, hreflang and canonical on every page, content-hashed CSS/JS for immutable caching",
+      "Motion that degrades: CSS scroll-driven animations for the collage and reveals, GSAP ScrollTrigger only for the pinned programs strip, everything gated on prefers-reduced-motion and animating transform/opacity only",
+      "A live mascot: two 3×3 sprite sheets drawn from the brand owl, keyed and aligned in a build pipeline, then a vanilla-JS port of the page-mascot component so Bufi follows the cursor and reacts to taps (plus a favicon set cut from his head)",
+      "Book a tour: Google Calendar appointment schedule embedded on /book/ (a button on phones), so staff edit availability in Calendar and the state keeps confirmations and reminders",
+      "Contact form → Cloudflare Pages Function → Resend, with honeypot, validation, Reply-To set to the parent, and a thank-you page",
+      "Image pipeline with Sharp: AVIF/WebP at five widths, hero under 250 KB, lazy loading below the fold; a branded 1200×630 OG image",
+      "Migration: bufipreschool.com moved from GoDaddy/Wix nameservers to Cloudflare with MX/SPF carried over, DKIM generated, DMARC rewritten; bufi.info transferred out of Wix and 301-redirected; old Wix slugs mapped in _redirects",
+      "Launch polish: custom 404, privacy page, sticky mobile CTA, HSTS/CSP headers, generated sitemap with lastmod and x-default, cookie-less analytics",
+    ],
+    sections: [
+      {
+        title: "Local SEO",
+        items: [
+          "Baseline audits with parallel specialist agents (technical 78, local 42, content 58) and a SERP read of eight target queries: the map pack and directories dominate, so the website's job is to support the Google Business Profile, not replace it",
+          "Preschool + ChildCare + LocalBusiness JSON-LD graph on every page: NAP, geo, hours, DCF license, aggregate rating, programs as offers with age ranges, areas served, languages; WebSite/WebPage/Breadcrumb nodes",
+          "Titles, descriptions and H1s rewritten around what parents type (“Bilingual Preschool & Daycare in Doral, FL” / “Preescolar y Guardería Bilingüe en Doral”); the greeting stays as the display line, the keyword line is the H1",
+          "New /vpk/ page in both languages and a 10-item FAQ built only from verified facts; a quick-facts band under the hero; embedded map and service-area line",
+          "Google Business Profile: fixed the listing's city (it said Miami), pointed it at the new domain, set Preschool / Day care center / Child care agency / Kindergarten categories, rewrote the description, trimmed the service area",
+          "Review program: a /review short link, bilingual printed QR cards with three prompt questions that naturally surface program names, teacher names and specifics, and an owner action plan ranked by impact",
+          "SEO drift baseline captured so every deploy can be diffed for regressions",
+        ],
+      },
+    ],
+    learned: [
+      "The website is the smaller half of local search. Bufi already had the best rating in Doral (5.0) but the fourth-highest review count; no amount of schema outranks proximity and 100 reviews. The honest deliverable was a site that removes every excuse plus a plan the owner can actually run.",
+      "Migrations are mostly about email. The domain move took ten minutes; making sure MX, SPF, DKIM and DMARC survived it, and discovering that Google Workspace was billed through Wix and would die with the Wix account, took the care.",
+      "Say what's true. The first draft said “free VPK”; the school enrolls VPK children for the full day and the state only funds the VPK hours. Every instance came out, and the rule went into the project's instructions so it can't creep back.",
+      "Motion earns its place one moment at a time: a single hero reveal, one pinned strip, one collage drift, and a mascot that flaps its wing across one section. Everything else stays still so those land.",
+    ],
+    status: "live",
+    featured: false,
+    year: "2026",
+    discipline: "WEB | BRAND REDESIGN | LOCAL SEO",
+    accentColor: "#F0C000",
+    category: "Web",
+    deployment: "public",
+    organization: "Bufi Preschool",
   },
   {
     slug: "nba-salary-cap",

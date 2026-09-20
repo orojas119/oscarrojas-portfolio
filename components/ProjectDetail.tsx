@@ -105,7 +105,7 @@ export function ProjectDetail({
               transition={{ duration: 0.6, delay: 0.38 }}
               className="mt-3 text-[11px] text-charcoal/50 dark:text-cream/50 tracking-wide"
             >
-              Built at {project.organization}
+              {project.category === "Internal Tools" ? "Built at" : "Built for"} {project.organization}
             </motion.p>
           )}
         </div>
@@ -173,6 +173,50 @@ export function ProjectDetail({
           </motion.div>
         )}
 
+        {/* Before / After */}
+        {project.beforeAfter && (
+          <motion.section
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.42 }}
+            className="mb-14"
+          >
+            <p className="text-[10px] tracking-[0.4em] uppercase text-charcoal/40 dark:text-cream/40 mb-5">
+              Before &amp; After
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[project.beforeAfter.before, project.beforeAfter.after].map((side, i) => (
+                <div key={i}>
+                  {/* Full-page captures scroll inside a fixed-height frame */}
+                  <div className="relative h-[28rem] sm:h-[32rem] rounded-lg overflow-y-auto overscroll-contain border border-charcoal/10 dark:border-cream/10 shadow-sm bg-charcoal/5 dark:bg-cream/5">
+                    <Image
+                      src={side.image}
+                      alt={`${project.title}: ${side.label}`}
+                      width={1200}
+                      height={2400}
+                      className="w-full h-auto"
+                      sizes="(max-width: 640px) 100vw, 448px"
+                    />
+                  </div>
+                  <p className="mt-2 text-[11px] tracking-[0.08em] uppercase text-charcoal/60 dark:text-cream/60">
+                    <span
+                      className="inline-block w-1.5 h-1.5 rounded-full mr-2 align-middle"
+                      style={{ backgroundColor: i === 0 ? "#9CA3AF" : project.accentColor }}
+                    />
+                    {side.label}
+                  </p>
+                  {side.note && (
+                    <p className="mt-1 text-xs text-charcoal/50 dark:text-cream/50 leading-relaxed">{side.note}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+            <p className="mt-3 text-[10px] tracking-[0.2em] uppercase text-charcoal/30 dark:text-cream/30">
+              Scroll inside each frame · full-page captures
+            </p>
+          </motion.section>
+        )}
+
         {/* Tech stack */}
         <motion.section
           initial={{ opacity: 0, y: 16 }}
@@ -230,6 +274,32 @@ export function ProjectDetail({
           </ul>
         </motion.section>
 
+        {/* Extra sections (e.g. SEO) */}
+        {project.sections?.map((sec, si) => (
+          <motion.section
+            key={sec.title}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.58 + si * 0.03 }}
+            className="mb-14"
+          >
+            <p className="text-[10px] tracking-[0.4em] uppercase text-charcoal/40 dark:text-cream/40 mb-5">
+              {sec.title}
+            </p>
+            <ul className="space-y-3">
+              {sec.items.map((item, i) => (
+                <li key={i} className="flex items-start gap-3 text-charcoal/70 dark:text-cream/70">
+                  <span
+                    className="mt-2.5 shrink-0 w-1.5 h-1.5 rounded-full"
+                    style={{ backgroundColor: project.accentColor }}
+                  />
+                  <span className="text-sm leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.section>
+        ))}
+
         {/* Screenshot gallery */}
         {project.images && project.images.length > 0 && (
           <motion.section
@@ -242,7 +312,7 @@ export function ProjectDetail({
               Screenshots
             </p>
             {(() => {
-              const captions = [
+              const captions = project.imageCaptions ?? [
                 "Dashboard Overview",
                 "Filter Controls",
                 "Impact Score Leaderboard",

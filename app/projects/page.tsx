@@ -42,7 +42,7 @@ export default function ProjectsPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-5 text-sm text-charcoal/50 dark:text-cream/50"
           >
-            Data engineering, software, and internal tools I&apos;ve built.
+            Data engineering, software, web, and internal tools I&apos;ve built.
           </motion.p>
         </div>
 
@@ -53,7 +53,7 @@ export default function ProjectsPage() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-[10px] tracking-[0.4em] uppercase text-charcoal/40 dark:text-cream/40 mb-4"
         >
-          Data Engineering &amp; Software
+          Data Engineering, Software &amp; Web
         </motion.p>
         <motion.div
           initial={{ scaleX: 0 }}
