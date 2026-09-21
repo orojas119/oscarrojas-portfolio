@@ -125,10 +125,10 @@ export const projects: Project[] = [
     slug: "bufi-preschool",
     title: "Bufi Preschool Website",
     tagline:
-      "Full redesign and migration of a bilingual preschool's Wix site to a static, motion-rich site on Cloudflare Pages: new domain, email hardening, online tour booking, a live mascot, and a local-SEO build aimed at the Doral map pack.",
+      "Full redesign and migration of a bilingual preschool's Wix site to a static, motion-rich site on Cloudflare Pages: new domain, email hardening, online tour booking, a live mascot, a Core Web Vitals pass (mobile LCP 8.1 s → 2.2 s), and a free-route local-SEO build aimed at the Doral map pack.",
     description:
       "Bufi is a family-run bilingual preschool in Doral, FL whose only job online is to get a parent to book a tour. The old Wix site had a dead booking widget, two broken embeds, pastel headings that failed contrast, 30 MB PNGs, page slugs like /blank-1, and English and Spanish crammed into the same labels. I rebuilt it from the brand up: every photo and the owl mascot carried over, proper EN and ES pages with hreflang, a hero that reads in under 2.5 s on 4G, and a booking flow that lands on a calendar instead of a contact form. Then the unglamorous half: moving the domain and DNS off Wix without losing the school's email, wiring the form to a Pages Function, and giving the site the structured data and local signals its best-rated competitor already had.",
-    techStack: ["HTML/CSS/JS", "Node.js", "Cloudflare Pages", "Cloudflare Workers", "Resend", "Google Calendar", "GSAP", "Sharp", "Playwright"],
+    techStack: ["HTML/CSS/JS", "Node.js", "Cloudflare Pages", "Cloudflare Workers", "Resend", "Google Calendar", "GSAP", "Sharp", "Lighthouse", "Search Console", "Bing Webmaster Tools", "IndexNow", "Playwright"],
     demo: "https://bufipreschool.com",
     coverImage: "/images/bufi/after-home.jpg",
     beforeAfter: {
@@ -142,6 +142,8 @@ export const projects: Project[] = [
       "/images/bufi/mobile-before-after.jpg",
       "/images/bufi/after-es.jpg",
       "/images/bufi/after-programs.jpg",
+      "/images/bufi/after-program-infants.jpg",
+      "/images/bufi/after-article.jpg",
     ],
     imageCaptions: [
       "Philosophy collage: scroll-driven parallax, and a small Bufi that flies the section",
@@ -150,6 +152,8 @@ export const projects: Project[] = [
       "Mobile, before and after (390px)",
       "Spanish site: the school's own copy, not machine translation",
       "Programs page with Doral-intent title and H1",
+      "One of three program pages added in the free-route pass: keyword H1, facts band, program FAQ, 3-level breadcrumbs, EN + ES",
+      "The Creative Curriculum guide: the only non-local query with real volume, written for parents comparing schools, with Article schema",
     ],
     features: [
       "Static site with a small Node build: EN and ES rendered from one set of templates and two JSON string files, hreflang and canonical on every page, content-hashed CSS/JS for immutable caching",
@@ -163,6 +167,16 @@ export const projects: Project[] = [
     ],
     sections: [
       {
+        title: "Performance",
+        items: [
+          "Production mobile LCP was 8.1 s on a Slow-4G Lighthouse run despite a “fast” hero. The waterfall told the story: 1.48 MB on first load, the hero image fetched at Low priority, and ~1 MB of below-the-fold images competing with it",
+          "Root causes, in order of impact: the decorative duplicate of an auto-scrolling carousel had no loading=lazy (16 images at parse time); two 180 KB mascot sprite atlases sat in the hero's inline style; the hero preload lacked fetchpriority=high; four render-blocking CSS files; full-charset fonts",
+          "Fixes: lazy + fetchpriority=low on every below-fold photo, a 20 KB idle frame for the mascot with atlases loaded only on fine-pointer devices after load, Latin font subsets (181 → 123 KB), one CSS bundle, real analytics token (the placeholder was 403-ing on every page)",
+          "Result: LCP 2.2 s, performance 64 → 98 on the home page, 97–99 on every other page, SEO/accessibility 100, page weight 833 KB. Guardrails written into the project instructions so the next feature can't undo it",
+          "Found along the way: three deploys had silently failed because a generated folder was gitignored — production had been stale for hours while every push “succeeded.” Now every deploy is verified live, not just pushed",
+        ],
+      },
+      {
         title: "Local SEO",
         items: [
           "Baseline audits with parallel specialist agents (technical 78, local 42, content 58) and a SERP read of eight target queries: the map pack and directories dominate, so the website's job is to support the Google Business Profile, not replace it",
@@ -171,6 +185,11 @@ export const projects: Project[] = [
           "New /vpk/ page in both languages and a 10-item FAQ built only from verified facts; a quick-facts band under the hero; embedded map and service-area line",
           "Google Business Profile: fixed the listing's city (it said Miami), pointed it at the new domain, set Preschool / Day care center / Child care agency / Kindergarten categories, rewrote the description, trimmed the service area",
           "Review program: a /review short link, bilingual printed QR cards with three prompt questions that naturally surface program names, teacher names and specifics, and an owner action plan ranked by impact",
+          "Keyword Planner run on 38 Doral terms to decide what to build next: “preschool near me” / “daycare near me” carry 100K–1M searches a month and are won in the map pack; the Doral head terms are 100–1K; Spanish queries have no measurable volume; “creative curriculum preschool” is the one non-local term with demand (1K–10K). So: no neighborhood or Spanish landing pages, three program pages and one article instead",
+          "Free-route content: /programs/infants/, /toddlers/ and /pre-k/ plus a Creative Curriculum guide, all EN + ES with 3-level breadcrumbs and Article schema — 14 → 22 URLs, submitted through IndexNow the minute they went live",
+          "Second index: Bing Webmaster Tools verified and sitemap submitted (Bing feeds Copilot, DuckDuckGo and parts of ChatGPT search); IndexNow key at the site root with an npm script that re-submits after any deploy",
+          "Paid ads evaluated and shelved: set up the Google Ads account, tag and three conversion actions at $0, modeled a two-season campaign from the account's own bid data ($4–9K/yr, ≈$240 per enrollment), then recommended the free route because the school's constraint is seats, not visibility. The tag is dormant; the site sets no cookies",
+          "Owner handout: a ranked, timed, one-week task sheet (reviews, profile photos, directory NAP fixes, the facts only they have), a copy-paste citation kit in EN and ES, and a review-reply guide with templates — because the highest-impact SEO work left is theirs, not mine",
           "SEO drift baseline captured so every deploy can be diffed for regressions",
         ],
       },
@@ -180,6 +199,9 @@ export const projects: Project[] = [
       "Migrations are mostly about email. The domain move took ten minutes; making sure MX, SPF, DKIM and DMARC survived it, and discovering that Google Workspace was billed through Wix and would die with the Wix account, took the care.",
       "Say what's true. The first draft said “free VPK”; the school enrolls VPK children for the full day and the state only funds the VPK hours. Every instance came out, and the rule went into the project's instructions so it can't creep back.",
       "Motion earns its place one moment at a time: a single hero reveal, one pinned strip, one collage drift, and a mascot that flaps its wing across one section. Everything else stays still so those land.",
+      "Lighthouse lies less than my eyes. The hero looked instant on my machine; on a throttled run it was the last thing to paint, because a decorative duplicate of a carousel was eating the bandwidth. Measure on the slow path, read the waterfall, then fix the biggest number first.",
+      "A strict CSP silently no-ops every copy-paste tag on the internet. Google's own snippet rendered in the HTML and never ran; the fix was an external file with IDs in data attributes, verified by watching the actual request leave the browser.",
+      "Knowing when to say “don't spend.” The ad model worked on paper; the school's real constraint was open seats and a review count, so the right deliverable was a $0 setup, a shelved plan, and a task list the owner can finish in a week.",
     ],
     status: "live",
     featured: false,
