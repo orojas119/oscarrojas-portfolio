@@ -6,7 +6,7 @@ export const COMPANY = {
   state: "Florida",
   street: "2255 S Miami Ave",
   cityLine: "Miami, FL 33129",
-  email: "admin@oscar-rojas.dev",
+  email: "hello@oscar-rojas.dev",
   principal: "Oscar Rojas",
   policiesUpdated: "October 10, 2026",
 } as const;
