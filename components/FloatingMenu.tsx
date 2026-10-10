@@ -8,6 +8,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/ils", label: "ILS Work" },
+  { href: "/consulting", label: "Consulting" },
   { href: "/about", label: "About" },
   { href: "/Oscar_Rojas_Resume.pdf", label: "Resume ↗", external: true },
 ];
