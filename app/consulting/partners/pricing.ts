@@ -61,6 +61,18 @@ export const APPS: App[] = [
   },
 ];
 
+/** The all-in-one subscription: every app for one monthly fee, no license. Keep in step with the console (App shop → All-in-one plan). */
+export const PLAN = {
+  name: "All-in-one",
+  wholesale: 47900,
+  suggested: 79900,
+  minimumMonths: 12,
+  addOnDiscount: 0.25,
+};
+
+/** An add-on price on the all-in-one plan, rounded to the cent. */
+export const planPrice = (cents: number | null) => (cents === null ? null : Math.round(cents * (1 - PLAN.addOnDiscount)));
+
 /** "$5,625", "1.9¢", "at cost". */
 export function price(value: number | null, unit?: string): string {
   if (unit === "at cost" || value === null) return "at cost";
