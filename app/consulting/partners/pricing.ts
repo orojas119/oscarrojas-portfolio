@@ -2,7 +2,7 @@
 // console catalog and docs/PRICING.md in the platform repo. Amounts in cents.
 export type Line = { name: string; detail?: string; wholesale: number | null; suggested: number | null; unit?: string };
 export type App = {
-  key: "crm" | "helpdesk";
+  key: "crm" | "helpdesk" | "behavior";
   name: string;
   status?: string;
   summary: string;
@@ -59,13 +59,35 @@ export const APPS: App[] = [
       { name: "Migration from their previous help desk", detail: "Open tickets, history and knowledge-base articles.", wholesale: 90000, suggested: 120000 },
     ],
   },
+  {
+    key: "behavior",
+    name: "Behavior & Discipline",
+    status: "Beta",
+    summary:
+      "Conduct referrals and a dean's dashboard built around each school's code of conduct. Teachers report exceptional behavior, behavior concerns and academic integrity issues in under a minute, for one student or a group; the office triages by status and severity, records consequences and demerits, messages the teacher back, and sees each student's history. Private views keep safety referrals with counseling and academic integrity with department heads. Teachers sign in with their school email, with no accounts to create.",
+    note: "Beta: the core app is live and can be ordered now. The school integrations are built per school as they are ordered.",
+    core: [
+      { name: "License", detail: "One-time, per school, no setup fee", wholesale: 337500, suggested: 450000 },
+      { name: "Operations and support", detail: "Per month; hosting and email included, no usage charges", wholesale: 5900, suggested: 9900 },
+    ],
+    addOns: [
+      { name: "PowerSchool roster sync", detail: "Students, ID numbers, grades and homerooms load from the nightly student information system export.", wholesale: 135000, suggested: 180000 },
+      { name: "Discipline log written back to PowerSchool", detail: "Closed referrals are recorded in the student information system's discipline log.", wholesale: 180000, suggested: 240000 },
+      { name: "Parent and guardian notifications", detail: "Guardians get an email in English or Spanish when a consequence is assigned.", wholesale: 90000, suggested: 120000 },
+      { name: "Merit and demerit points with detention scheduling", detail: "Thresholds the school sets schedule a detention and notify the dean and attendance office.", wholesale: 120000, suggested: 160000 },
+      { name: "Department-head and counselor routing", detail: "Academic integrity to the right department head, safety to counseling, with repeat counts.", wholesale: 60000, suggested: 80000 },
+      { name: "Student lookup from the school directory", detail: "Teachers find students in the school's Microsoft or Google directory.", wholesale: 60000, suggested: 80000 },
+      { name: "Migration from the previous system", detail: "Past referrals, students and outcomes from spreadsheets, SharePoint or another tool.", wholesale: 90000, suggested: 120000 },
+      { name: "School web address and email sender", detail: "For example conduct.school.org, with email from the school's domain.", wholesale: 30000, suggested: 40000 },
+    ],
+  },
 ];
 
 /** The all-in-one subscription: every app for one monthly fee, no license. Keep in step with the console (App shop → All-in-one plan). */
 export const PLAN = {
   name: "All-in-one",
-  wholesale: 47900,
-  suggested: 79900,
+  wholesale: 53900,
+  suggested: 89900,
   minimumMonths: 12,
   addOnDiscount: 0.25,
 };
