@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { APPS, PLAN, planPrice, price, type Line } from "./pricing";
 
-type Mode = "crm" | "helpdesk" | "plan";
+type Mode = "crm" | "helpdesk" | "behavior" | "plan";
 
 /** Pick an app (or the all-in-one plan) and add-ons: the customer's price, what the partner pays us and keeps. Usage not included. */
 export function QuoteBuilder() {

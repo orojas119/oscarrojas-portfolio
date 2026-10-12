@@ -72,9 +72,12 @@ const examples = [
   {
     title: "A school on All-in-one",
     detail: "Every app, no license, with the PowerSchool schedule and calendar integrations at 25% off.",
-    rows: [["School pays you, once", "$2,700"], ["You pay us, once", "$2,025"], ["You keep, once", "$675"], ["School pays you, monthly", "$799"], ["You pay us, monthly", "$479"], ["You keep, monthly", "$320"]],
+    rows: [["School pays you, once", "$2,700"], ["You pay us, once", "$2,025"], ["You keep, once", "$675"], ["School pays you, monthly", "$899"], ["You pay us, monthly", "$539"], ["You keep, monthly", "$360"]],
   },
 ];
+
+/** "the A, the B and the C". */
+const listApps = (names: string[]) => names.map((n) => `the ${n}`).join(", ").replace(/, ([^,]*)$/, " and $1");
 
 const compare = [
   ["Up front", "License, once (from $4,500)", "Nothing"],
@@ -150,7 +153,7 @@ export default function PartnerPriceSheet() {
           <span className="bg-yellow text-charcoal text-[11px] font-bold tracking-[0.2em] uppercase px-2 py-1">Subscription</span>
         </div>
         <p className="max-w-3xl text-charcoal/80 dark:text-cream/80 leading-relaxed">
-          Every app we offer for one monthly fee, with no license to buy. Today that&apos;s the {APPS.map((a) => a.name).join(" and the ")}; every app we
+          Every app we offer for one monthly fee, with no license to buy. Today that&apos;s {listApps(APPS.map((a) => a.name))}; every app we
           launch later is added to the customer&apos;s portal automatically, at no extra charge. Each app is set up when the customer is ready to use it.
         </p>
         <PriceTable caption="Monthly" emphasizeFirst lines={[
@@ -182,7 +185,7 @@ export default function PartnerPriceSheet() {
         <p className={`text-sm ${muted}`}>
           Rule of thumb: All-in-one suits customers who want several apps or can&apos;t pay up front. Buying licenses costs less for a customer that
           stays more than about two and a half years. A plan customer that decides to own its apps gets half of the last 12 months&apos; fees
-          credited toward the licenses (up to half the license price): after a year on the plan, both licenses cost $7,206 instead of $12,000.
+          credited toward the licenses (up to half the license price): after a year on the plan ($10,788), all three licenses cost $11,106 instead of $16,500.
         </p>
       </section>
 
