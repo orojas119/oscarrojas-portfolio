@@ -82,6 +82,7 @@ const compare = [
   ["Commitment", "12 months of the monthly fee", `${PLAN.minimumMonths} months, then month to month`],
   ["New apps", "Bought separately", "Included automatically"],
   ["Add-ons", "List price, once", "25% off, once"],
+  ["Switching", "Can move to All-in-one; licenses already bought are kept", "Can buy licenses any time, with 50% of the last 12 months' fees credited (up to half the license price)"],
   ["If they leave", "Keep the license and add-ons they bought", "Data exported; licenses needed to keep using the apps"],
 ];
 
@@ -89,7 +90,7 @@ const terms = [
   ["The monthly fee covers", ["Hosting, backups and monitoring", "Security updates and bug fixes", "Keeping existing integrations working when the other system changes", "Support, including up to about two hours of small changes a month"]],
   ["Billing", ["License and add-ons invoiced when the order is approved", "Monthly fee billed monthly or yearly (schools usually prefer a yearly purchase order)", "12-month minimum for the monthly fee", "Usage invoiced monthly", "Prices adjusted at most once a year, capped at 5% or inflation"]],
   ["What the customer owns", ["A perpetual license to use the app while the monthly fee is active", "Every add-on it buys, kept for good", "All of its data, with a full export on request or when it leaves", "New features and new integrations are offered as add-ons"]],
-  ["All-in-one plan", ["12-month minimum, then month to month with 30 days' notice", "Billed monthly, or yearly by purchase order", "Every current app included, and new apps added automatically", "Add-ons 25% off; usage billed as usual", "If the customer leaves, its data is exported; to keep using the apps it buys licenses"]],
+  ["All-in-one plan", ["12-month minimum, then month to month with 30 days' notice", "Billed monthly, or yearly by purchase order", "Every current app included, and new apps added automatically", "Add-ons 25% off; usage billed as usual", "Buy licenses any time with a one-time credit: 50% of the last 12 months' plan fees, up to half the license price", "If the customer leaves, its data is exported; to keep using the apps it buys licenses"]],
 ] as const;
 
 export default function PartnerPriceSheet() {
@@ -180,7 +181,8 @@ export default function PartnerPriceSheet() {
         </div>
         <p className={`text-sm ${muted}`}>
           Rule of thumb: All-in-one suits customers who want several apps or can&apos;t pay up front. Buying licenses costs less for a customer that
-          stays more than about two and a half years.
+          stays more than about two and a half years. A plan customer that decides to own its apps gets half of the last 12 months&apos; fees
+          credited toward the licenses (up to half the license price): after a year on the plan, both licenses cost $7,206 instead of $12,000.
         </p>
       </section>
 
