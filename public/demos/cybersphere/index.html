@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Software demos · CyberSphere Solutions</title>
+<meta name="description" content="Try the school and organization software CyberSphere Solutions offers: Help Desk, Behavior &amp; Discipline and Messaging CRM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #001B44;
+    --navy-2: #0B2A5B;
+    --gold: #D4AF37;
+    --gold-ink: #1A1400;
+    --ink: #0F1B2D;
+    --muted: #4B5A70;
+    --line: #DDE3EC;
+    --wash: #F4F6FA;
+    --white: #FFFFFF;
+    --sky: #2E8BEF;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.55;
+    font-size: 17px;
+  }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: 24px; }
+
+  /* Header */
+  .top { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.96); backdrop-filter: saturate(1.2) blur(6px); border-bottom: 1px solid var(--line); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+  .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .brand img { height: 52px; width: auto; }
+  .brand span { font-weight: 600; color: var(--navy); font-size: 15px; padding-left: 14px; border-left: 1px solid var(--line); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 0 20px; border-radius: 7px; font-weight: 600; font-size: 16px; text-decoration: none; transition: filter .15s ease, background .15s ease; }
+  .btn-gold { background: var(--gold); color: var(--gold-ink); }
+  .btn-gold:hover { filter: brightness(1.06); }
+  .btn-line { border: 1.5px solid var(--navy); color: var(--navy); background: transparent; }
+  .btn-line:hover { background: var(--navy); color: var(--white); }
+  .btn:focus-visible, a:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
+
+  /* Hero */
+  .hero { background: var(--navy); color: var(--white); padding-block: 72px 64px; position: relative; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 420px; height: 420px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(212,175,55,.18), rgba(212,175,55,0)); pointer-events: none; }
+  .eyebrow { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin: 0 0 14px; }
+  .hero h1 { font-size: clamp(34px, 5.2vw, 58px); line-height: 1.05; font-weight: 800; margin: 0 0 18px; max-width: 16ch; text-wrap: balance; }
+  .hero p.lede { font-size: 19px; color: #C9D3E3; max-width: 60ch; margin: 0 0 30px; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero .btn-line { border-color: rgba(255,255,255,.55); color: var(--white); }
+  .hero .btn-line:hover { background: var(--white); color: var(--navy); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; padding: 0; list-style: none; }
+  .chips li { font-size: 14px; color: #C9D3E3; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; padding: 6px 14px; }
+
+  /* Demos */
+  section { padding-block: 72px; }
+  .section-head { max-width: 62ch; margin-bottom: 40px; }
+  .section-head h2 { font-size: clamp(28px, 3.6vw, 40px); font-weight: 800; color: var(--navy); margin: 0 0 10px; line-height: 1.1; }
+  .section-head p { color: var(--muted); margin: 0; }
+  .demo { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: center; padding-block: 44px; border-top: 1px solid var(--line); }
+  .demo:nth-of-type(even) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  .demo:nth-of-type(even) .shot { order: -1; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--navy-2); background: #E8EEF8; border-radius: 4px; padding: 4px 8px; margin-bottom: 14px; }
+  .demo h3 { font-size: 30px; font-weight: 800; color: var(--navy); margin: 0 0 10px; line-height: 1.15; }
+  .demo p { color: var(--muted); margin: 0 0 18px; }
+  .demo h4 { font-size: 14px; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); margin: 22px 0 10px; }
+  .demo ul { margin: 0 0 24px; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .demo li { position: relative; padding-left: 28px; }
+  .demo li::before { content: ""; position: absolute; left: 0; top: .45em; width: 14px; height: 14px; border-radius: 3px; background: var(--gold); box-shadow: inset 0 0 0 3px #F6E7B3; }
+  .demo .note { font-size: 15px; color: var(--muted); border-left: 3px solid var(--gold); padding: 2px 0 2px 12px; margin: -6px 0 24px; }
+  .shot { margin: 0; }
+  .shot .frame { border-radius: 10px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 18px 40px -18px rgba(0,27,68,.35); background: var(--wash); }
+  .shot .bar { height: 26px; background: #E9EDF3; display: flex; align-items: center; gap: 6px; padding-left: 12px; border-bottom: 1px solid var(--line); }
+  .shot .bar i { width: 9px; height: 9px; border-radius: 50%; background: #C5CDD9; display: block; }
+  .shot figcaption { font-size: 14px; color: var(--muted); margin-top: 10px; }
+
+  /* Steps */
+  .how { background: var(--wash); }
+  .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin: 0; padding: 0; list-style: none; counter-reset: step; }
+  .steps li { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 24px 22px; counter-increment: step; }
+  .steps li::before { content: counter(step); display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--navy); color: var(--gold); font-weight: 800; margin-bottom: 14px; }
+  .steps h3 { font-size: 18px; color: var(--navy); margin: 0 0 6px; }
+  .steps p { margin: 0; color: var(--muted); font-size: 15.5px; }
+
+  .fine { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 28px; }
+  .fine div { font-size: 15px; color: var(--muted); }
+  .fine strong { display: block; color: var(--navy); margin-bottom: 4px; font-size: 15.5px; }
+
+  /* CTA + footer */
+  .cta { background: var(--navy); color: var(--white); text-align: left; }
+  .cta .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+  .cta h2 { font-size: clamp(26px, 3.2vw, 36px); font-weight: 800; margin: 0 0 6px; }
+  .cta p { margin: 0; color: #C9D3E3; }
+  .cta .mail { font-weight: 600; color: var(--white); }
+  footer { padding-block: 28px; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+  footer a { color: var(--navy-2); }
+
+  @media (max-width: 900px) {
+    .demo, .demo:nth-of-type(even) { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+    .demo:nth-of-type(even) .shot { order: 0; }
+    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .fine { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .wrap { padding-inline: 16px; }
+    .brand img { height: 42px; }
+    .brand span { display: none; }
+    .top .btn { padding: 0 14px; min-height: 42px; font-size: 15px; }
+    .hero { padding-block: 52px 48px; }
+    section { padding-block: 52px; }
+    .steps { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="https://www.cyberspheresolutions.tech" aria-label="CyberSphere Solutions home">
+      <img src="https://static.wixstatic.com/media/2ff088_387757698d75488fb8227ce8ee54ef5d~mv2.png" alt="CyberSphere Solutions" width="155" height="86">
+      <span>Software demos</span>
+    </a>
+    <a class="btn btn-gold" href="mailto:info@cyberspheresolutions.tech?subject=Demo%20access%20request&amp;body=Hi%20CyberSphere%2C%0A%0AI%27d%20like%20to%20try%3A%20(Help%20Desk%20%2F%20Behavior%20%26%20Discipline%20%2F%20Messaging%20CRM)%0A%0AName%3A%0AOrganization%3A%0AEmail%20to%20use%20for%20the%20demo%3A%0A%0AThank%20you!">Request access</a>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Try before you decide</p>
+      <h1>See the software working before you buy it.</h1>
+      <p class="lede">Each demo is a live copy of the app, set up for a sample school, Coral Bay Academy, with sample data. Tell us which one you'd like to try and we'll set you up with your own sign-in.</p>
+      <div class="actions">
+        <a class="btn btn-gold" href="#demos">See the demos</a>
+        <a class="btn btn-line" href="#how">How access works</a>
+      </div>
+      <ul class="chips" aria-label="Demos available">
+        <li>Help Desk</li>
+        <li>Behavior &amp; Discipline</li>
+        <li>Messaging CRM</li>
+      </ul>
+    </div>
+  </div>
+
+  <section id="demos">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Three demos, ready to try</h2>
+        <p>Built for schools and organizations, hosted and maintained for you, and set up around the way you already work.</p>
+      </div>
+
+      <article class="demo" id="help-desk">
+        <div>
+          <span class="tag">For schools</span>
+          <h3>Help Desk</h3>
+          <p>A technology help desk built around your school. Students, parents and staff ask for help from a simple page with no account; your team works every request from one queue.</p>
+          <h4>What you can try</h4>
+          <ul>
+            <li>Send a request the way a student, parent or teacher would, and get the confirmation email.</li>
+            <li>See the staff queue: every ticket, its status, who it's from and how old it is.</li>
+            <li>Browse the knowledge base articles that answer common questions before a ticket is filed.</li>
+            <li>Look through the reports your team would use each week.</li>
+          </ul>
+          <a class="btn btn-line" href="mailto:info@cyberspheresolutions.tech?subject=Demo%20access%3A%20Help%20Desk&amp;body=Hi%20CyberSphere%2C%0A%0AI%27d%20like%20to%20try%20the%20Help%20Desk%20demo.%0A%0AName%3A%0AOrganization%3A%0AEmail%20to%20use%20for%20the%20demo%3A%0A%0AThank%20you!">Request the Help Desk demo</a>
+        </div>
+        <figure class="shot">
+          <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="/demos/cybersphere/img/hd-queue.webp" alt="Help Desk staff queue showing three new tickets with requester, status and age" width="1600" height="645" loading="lazy"></div>
+          <figcaption>The staff queue at Coral Bay Academy.</figcaption>
+        </figure>
+      </article>
+
+      <article class="demo" id="behavior">
+        <div>
+          <span class="tag">For schools</span>
+          <h3>Behavior &amp; Discipline</h3>
+          <p>Conduct referrals in under a minute and a dean's dashboard built around your school's code of conduct. Teachers report exceptional behavior, behavior concerns and academic integrity issues from any device.</p>
+          <h4>What you can try</h4>
+          <ul>
+            <li>File a referral as a teacher, for one student or a group, with the school's own categories and locations.</li>
+            <li>Follow the referrals you filed and see the outcome when the office closes them.</li>
+            <li>See the dean's dashboard: status, consequences, repeat students and exports.</li>
+          </ul>
+          <p class="note">The dean's dashboard is shown in a guided walkthrough with CyberSphere, so the sample school's records stay the same for everyone.</p>
+          <a class="btn btn-line" href="mailto:info@cyberspheresolutions.tech?subject=Demo%20access%3A%20Behavior%20%26%20Discipline&amp;body=Hi%20CyberSphere%2C%0A%0AI%27d%20like%20to%20try%20the%20Behavior%20%26%20Discipline%20demo.%0A%0AName%3A%0AOrganization%3A%0AEmail%20to%20use%20for%20the%20demo%3A%0A%0AThank%20you!">Request the Behavior &amp; Discipline demo</a>
+        </div>
+        <figure class="shot">
+          <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="/demos/cybersphere/img/bh-dashboard.webp" alt="Dean's dashboard with pending, open and closed counts, a referral list and top categories" width="1600" height="682" loading="lazy"></div>
+          <figcaption>The dean's dashboard with ten sample referrals.</figcaption>
+        </figure>
+      </article>
+
+      <article class="demo" id="crm">
+        <div>
+          <span class="tag">For schools and organizations</span>
+          <h3>Messaging CRM</h3>
+          <p>Two-way texting with your contacts, organized: contact lists, campaigns and a shared inbox for replies. Opt-outs are honored automatically and texts only go out at reasonable hours.</p>
+          <h4>What you can try</h4>
+          <ul>
+            <li>Browse contacts, lists and segments built from sample data.</li>
+            <li>Open a campaign that's set up and ready to preview.</li>
+            <li>See the team inbox and the dashboard your staff would use.</li>
+          </ul>
+          <p class="note">Texting is turned off in the demo, so nothing is ever sent to a real phone.</p>
+          <a class="btn btn-line" href="mailto:info@cyberspheresolutions.tech?subject=Demo%20access%3A%20Messaging%20CRM&amp;body=Hi%20CyberSphere%2C%0A%0AI%27d%20like%20to%20try%20the%20Messaging%20CRM%20demo.%0A%0AName%3A%0AOrganization%3A%0AEmail%20to%20use%20for%20the%20demo%3A%0A%0AThank%20you!">Request the Messaging CRM demo</a>
+        </div>
+        <figure class="shot">
+          <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="/demos/cybersphere/img/crm-contacts.webp" alt="Messaging CRM contacts list with names, phone numbers, location and texting status" width="1600" height="729" loading="lazy"></div>
+          <figcaption>Contacts in the sample organization (all numbers are fictional).</figcaption>
+        </figure>
+      </article>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How access works</h2>
+        <p>Every person gets their own sign-in. There are no shared passwords, and you can stop at any time.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Ask for access</h3><p>Use a "Request" button above or email us, and tell us which demo and which email address to use.</p></li>
+        <li><h3>We set you up</h3><p>CyberSphere adds your email to the demo and sends you the link to open.</p></li>
+        <li><h3>Create your sign-in</h3><p>The first time, choose "Create one," enter that same email and the code we email you.</p></li>
+        <li><h3>Explore</h3><p>Look around as long as you need during your trial. Questions? We're a reply away.</p></li>
+      </ol>
+      <div class="fine">
+        <div><strong>Sample data only</strong>Everything you see is made up for the demo. Please don't enter real student, family or customer information.</div>
+        <div><strong>Your access</strong>Your sign-in works only for the demos you asked for, and it ends when your trial does.</div>
+        <div><strong>A walkthrough, if you prefer</strong>We're happy to show you any demo on a call, with your questions answered as we go.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <div>
+        <h2>Ready to try one?</h2>
+        <p>Email <span class="mail">info@cyberspheresolutions.tech</span> or use the button.</p>
+      </div>
+      <a class="btn btn-gold" href="mailto:info@cyberspheresolutions.tech?subject=Demo%20access%20request&amp;body=Hi%20CyberSphere%2C%0A%0AI%27d%20like%20to%20try%3A%20(Help%20Desk%20%2F%20Behavior%20%26%20Discipline%20%2F%20Messaging%20CRM)%0A%0AName%3A%0AOrganization%3A%0AEmail%20to%20use%20for%20the%20demo%3A%0A%0AThank%20you!">Request access</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 CyberSphere Solutions · <a href="https://www.cyberspheresolutions.tech">cyberspheresolutions.tech</a></span>
+    <span>Software built and hosted by <a href="https://oscar-rojas.dev/consulting">OER Consulting</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
