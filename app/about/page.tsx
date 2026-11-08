@@ -5,11 +5,43 @@ import { PageHeader } from "@/components/PageHeader";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const skills: Record<string, string[]> = {
-  Languages: ["Python", "TypeScript", "JavaScript", "SQL", "Bash"],
-  "Data Engineering": ["dbt", "Apache Airflow", "Apache Spark", "Pandas", "BigQuery", "Snowflake"],
-  Cloud: ["AWS (S3, Lambda, EC2)", "GCP", "Docker"],
-  Tools: ["Git", "PostgreSQL", "Grafana", "Linux", "VS Code"],
+  Languages: ["TypeScript", "JavaScript", "Python", "SQL", "PowerShell", "Bash"],
+  "Cloud & Identity": [
+    "Azure Functions",
+    "Azure Static Web Apps",
+    "Azure SQL",
+    "Azure Automation",
+    "Bicep",
+    "Entra ID / External ID",
+    "Microsoft Graph",
+    "SharePoint",
+  ],
+  "Web & Data": ["React", "Next.js", "Prisma", "Twilio", "dbt", "DuckDB", "Pandas", "Plotly Dash"],
+  "IT Leadership": ["Apple fleet (Mosyle MDM)", "Apple School Manager", "Ruckus networking", "E-Rate", "Budgeting & vendor management", "Security audits"],
+  Tools: ["Git", "GitHub Actions", "Cloudflare", "Linux", "VS Code"],
 };
+
+const roles = [
+  {
+    title: "Director of Technology",
+    org: "Immaculata-La Salle High School",
+    dates: "Sep 15, 2026 – Present",
+    body: "Promoted from Information Technology Specialist. I lead technology for the school: the Apple device fleet (about 1,600 managed devices), campus network, identity and access, budget and vendor decisions, and the internal software the school runs on.",
+  },
+  {
+    title: "Founder",
+    org: "OER Consulting LLC",
+    dates: "2026 – Present",
+    body: "A Miami software company that builds and hosts multi-tenant applications, including a texting CRM and a school help desk, sold through reseller partners.",
+    href: "/consulting",
+  },
+  {
+    title: "Information Technology Specialist",
+    org: "Immaculata-La Salle High School",
+    dates: "Jan 2025 – Sep 2026",
+    body: "Built and shipped the school's internal tools on Azure while administering its device fleet and network.",
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -51,23 +83,49 @@ export default function AboutPage() {
           className="mb-14 space-y-5 max-w-2xl"
         >
           <p className="text-base sm:text-lg text-charcoal/75 dark:text-cream/75 leading-relaxed">
-            I&apos;m a data engineer based in Miami. My background is in software (automation,
-            backend APIs, infrastructure), and I&apos;ve spent the past several years applying
-            that to data: building pipelines with real error handling, dbt models with test
-            coverage I actually run, and dashboards backed by data I trust.
+            I&apos;m the Director of Technology at Immaculata-La Salle High School in Miami, a role
+            I stepped into on September 15, 2026 after twenty months as the school&apos;s IT
+            Specialist. I lead the devices, network, identity, and budget side of technology, and I
+            still write the software: dozens of internal tools now run the school day to day.
           </p>
           <p className="text-base sm:text-lg text-charcoal/75 dark:text-cream/75 leading-relaxed">
-            Most of my personal work is NBA-related. I&apos;ve built a player stats pipeline,
-            a live score tracker, and a salary cap tool that implements the luxury tax bracket
-            formula from the CBA up, and 27 unit tests confirm it matches the math. I keep building
-            these because I find the problems interesting.
+            I also run OER Consulting LLC, where I build and host multi-tenant applications, a texting
+            CRM and a school help desk among them, that are sold and supported through reseller
+            partners. Outside of work I build data projects, mostly NBA-related, because I find the
+            problems interesting.
           </p>
           <p className="text-base sm:text-lg text-charcoal/75 dark:text-cream/75 leading-relaxed">
             B.A. in Computer Science from FIU. Based in Miami, bilingual in English and Spanish.
-            Looking for data engineering roles, ideally somewhere that cares about what happens
-            upstream of the dashboard.
           </p>
         </motion.div>
+
+        {/* Experience */}
+        <motion.section
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.26 }}
+          className="mb-14"
+        >
+          <p className="text-[10px] tracking-[0.4em] uppercase text-charcoal/40 dark:text-cream/40 mb-5">
+            Roles
+          </p>
+          <div className="space-y-4">
+            {roles.map((r) => (
+              <div key={r.title + r.dates} className="border border-charcoal/10 dark:border-cream/10 rounded-xl p-6">
+                <p className="font-bold uppercase tracking-wide text-sm text-charcoal dark:text-cream">{r.title}</p>
+                <p className="text-xs tracking-[0.2em] uppercase text-charcoal/50 dark:text-cream/50 mt-1.5">
+                  {r.org} · {r.dates}
+                </p>
+                <p className="mt-3 text-sm text-charcoal/70 dark:text-cream/70 leading-relaxed">{r.body}</p>
+                {r.href && (
+                  <a href={r.href} className="mt-3 inline-block text-xs font-semibold underline decoration-yellow decoration-2 underline-offset-4 text-charcoal dark:text-cream">
+                    About OER Consulting
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </motion.section>
 
         {/* Education */}
         <motion.section

@@ -8,7 +8,7 @@ export function Footer() {
               Let&apos;s build something together.
             </p>
             <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">
-              Open to data engineering and software engineering roles.
+              Director of Technology at ILS and founder of OER Consulting.
             </p>
           </div>
           <div className="flex items-center gap-5">
