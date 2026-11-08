@@ -199,7 +199,7 @@ export default function AboutPage() {
             </a>
             {[
               { label: "GitHub", href: "https://github.com/orojas119" },
-              { label: "LinkedIn", href: "https://www.linkedin.com/in/oscarrojas119/" },
+              { label: "LinkedIn", href: "https://www.linkedin.com/in/oscarrojas-dev/" },
               { label: "Email", href: "mailto:rojaso125@gmail.com" },
             ].map(({ label, href }) => (
               <a
