@@ -32,7 +32,7 @@ export function Hero() {
         className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 text-[10px] tracking-[0.35em] uppercase text-charcoal/40 dark:text-cream/40 whitespace-nowrap"
         style={{ writingMode: "vertical-rl", transform: "translateY(-50%) rotate(180deg)" }}
       >
-        Data Engineer
+        Director of Technology
       </motion.span>
 
       <motion.span
@@ -102,7 +102,7 @@ export function Hero() {
           animate="show"
           className="mt-8 sm:mt-10 flex flex-wrap justify-center items-center gap-x-5 gap-y-2"
         >
-          {["Python", "TypeScript", "Azure", "SQL"].map((tag, i, arr) => (
+          {["TypeScript", "Python", "Azure", "SQL"].map((tag, i, arr) => (
             <span
               key={tag}
               className="text-[10px] sm:text-xs tracking-[0.3em] uppercase text-charcoal/50 dark:text-cream/50"

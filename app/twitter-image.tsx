@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Oscar Rojas — Data & Software Engineer";
+export const alt = "Oscar Rojas — Director of Technology & Software Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -29,7 +29,7 @@ export default function Image() {
             display: "flex",
           }}
         >
-          Data &amp; Software Engineer
+          Director of Technology &amp; Software Engineer
         </div>
         <div
           style={{

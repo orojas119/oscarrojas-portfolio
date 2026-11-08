@@ -51,7 +51,7 @@ export function CuratedProjects() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-6 text-xs sm:text-sm text-charcoal/50 dark:text-cream/50 max-w-sm"
         >
-          Data engineering and software projects, each one built to solve a real problem.
+          Software, platform, and data projects, each one built to solve a real problem.
         </motion.p>
       </div>
 
@@ -66,7 +66,7 @@ export function CuratedProjects() {
 
       {/* Project rows */}
       {(() => {
-        const HOME_SLUGS = ["nba-analytics", "live-game-tracker", "po-automation-platform"];
+        const HOME_SLUGS = ["oer-platform", "po-automation-platform", "nba-analytics"];
         const homeProjects = HOME_SLUGS.map((slug) => projects.find((p) => p.slug === slug)!).filter(Boolean);
         return (
           <div>

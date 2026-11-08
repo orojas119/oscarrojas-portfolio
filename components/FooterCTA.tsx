@@ -69,7 +69,7 @@ export function FooterCTA() {
             GitHub
           </a>
           <a
-            href="https://www.linkedin.com/in/oscarrojas119/"
+            href="https://www.linkedin.com/in/oscarrojas-dev/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs tracking-[0.25em] uppercase text-charcoal/60 dark:text-cream/60 hover:text-charcoal dark:hover:text-cream transition-colors"

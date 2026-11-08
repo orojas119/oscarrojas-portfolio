@@ -84,7 +84,7 @@ export function FloatingMenu() {
                   GitHub
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/oscarrojas119/"
+                  href="https://www.linkedin.com/in/oscarrojas-dev/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[10px] tracking-[0.3em] uppercase text-cream/40 hover:text-cream transition-colors"

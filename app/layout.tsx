@@ -17,13 +17,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://oscar-rojas.dev"),
-  title: "Oscar Rojas · Data & Software Engineer",
+  title: "Oscar Rojas · Director of Technology & Software Engineer",
   description:
-    "Portfolio of Oscar Rojas, a data engineer specializing in Python, dbt, and SQL.",
+    "Portfolio of Oscar Rojas: Director of Technology at Immaculata-La Salle High School, founder of OER Consulting, and a software engineer who builds and ships production systems.",
   openGraph: {
     title: "Oscar Rojas",
     description:
-      "Portfolio of Oscar Rojas, a data engineer specializing in Python, dbt, and SQL.",
+      "Portfolio of Oscar Rojas: Director of Technology at Immaculata-La Salle High School, founder of OER Consulting, and a software engineer who builds and ships production systems.",
     url: "https://oscar-rojas.dev",
     siteName: "Oscar Rojas",
     type: "website",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Oscar Rojas",
     description:
-      "Portfolio of Oscar Rojas, a data engineer specializing in Python, dbt, and SQL.",
+      "Portfolio of Oscar Rojas: Director of Technology at Immaculata-La Salle High School, founder of OER Consulting, and a software engineer who builds and ships production systems.",
   },
 };
 
