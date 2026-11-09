@@ -217,7 +217,7 @@ export const projects: Project[] = [
     title: "NBA Salary Cap Tracker",
     tagline: "Where every NBA team's payroll stands, what they owe in luxury tax, and what they're allowed to do next, backed by the actual CBA bracket math.",
     description:
-      "The NBA luxury tax works like income tax: each bracket rate applies only to salary within that band, not the total. That distinction matters: it's why Phoenix owes $101M in tax while other teams just over the line owe a fraction of that. I built a Python engine that implements the full CBA formula and verified it with 27 unit tests against known boundary values. The frontend shows where each team sits relative to the cap, tax line, and both aprons, and lists what they can and can't do based on their tier.",
+      "The NBA luxury tax works like income tax: each bracket rate applies only to salary within that band, not the total. That distinction matters: it's why a team far over the line owes many times what a team just over it does. I built a Python engine that implements the full CBA formula and verified it with 27 unit tests against known boundary values. The frontend shows where each team sits relative to the cap, tax line, and both aprons, and lists what they can and can't do based on their tier.",
     techStack: ["Python", "FastAPI", "React", "TypeScript", "Vite", "Tailwind CSS", "Render", "Vercel", "GitHub Actions", "pytest"],
     github: "https://github.com/orojas119/nba-salary-cap",
     demo: "https://nba-salary-cap.vercel.app",
@@ -226,6 +226,7 @@ export const projects: Project[] = [
       "All 30 teams with full player salary tables across 3 seasons (2026-27, 2027-28, 2028-29)",
       "SVG CapThresholdBar showing visual payroll position relative to cap, tax line, 1st apron, and 2nd apron",
       "Per-team restriction engine that dynamically lists what each team can and cannot do based on their tier",
+      "MCP server that lets AI agents query the engine: four read-only tools, a thresholds resource, and 30 tests including an end-to-end run over stdio (see the repo's mcp/ folder)",
       "League summary dashboard: total payroll, total tax collected, teams in each tier",
       "3-year payroll projection per team as contracts expire",
       "GitHub Actions daily validation: 30-team seed data validated and engine tests run every 24 hours",
@@ -233,7 +234,7 @@ export const projects: Project[] = [
     ],
     learned: [
       "The NBA luxury tax is an incremental bracket system like income tax: each rate applies only to salary within that band, not the total",
-      "Repeater tax adds $1.00 to every bracket rate for teams that paid tax in 3 of the prior 4 seasons, which is what drives Phoenix's $101M bill",
+      "Repeater tax adds $1.00 to every bracket rate for teams that paid tax in 3 of the prior 4 seasons, which sharply raises a team's bill",
       "Vite non-interactive scaffolding silently no-ops when the target directory isn't empty, so always verify file count before reporting build success",
       "GitHub Actions exit-code gating: validation exits 1 on bad data, stopping the workflow before stale data reaches cache",
       "Render prefers .python-version over runtime.txt. Include both for reliability across deploy environments.",
